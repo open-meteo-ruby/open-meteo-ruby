@@ -3,7 +3,7 @@ default:
   just --list
 
 # Run all checks from CI
-ci: format rubocop
+ci: format rubocop test
 
 # Start an IRB console with the OpenMeteo Ruby files loaded
 console:
@@ -21,3 +21,7 @@ lint: rubocop
 # Lint and autofix the Ruby files with Rubocop
 rubocop-fix:
   bundle exec rubocop -a
+
+# Run the RSpec tests
+test:
+  bundle exec rspec
