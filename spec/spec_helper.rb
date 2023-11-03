@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+require "simplecov"
+
+SimpleCov.start do
+  enable_coverage :branch
+  primary_coverage :branch
+  minimum_coverage 99
+end
+
 require "open_meteo"
 
 RSpec.configure do |config|
