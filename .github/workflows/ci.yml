@@ -1,0 +1,36 @@
+name: CI
+
+on: [push]
+
+jobs:
+  Lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rubocop
+  Format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rbprettier --check '**/*.{graphql,rb,json,yml,md}'
+  Tests:
+    name: "Test with Ruby ${{ matrix.ruby }}"
+    strategy:
+      matrix:
+        include:
+          - ruby: 3.2
+          - ruby: 3.1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - run: bundle exec rspec
