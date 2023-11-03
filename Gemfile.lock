@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    open-meteo (0.0.1)
+    open-meteo (0.0.2)
       faraday (~> 2.0, >= 2.0.0)
 
 GEM
