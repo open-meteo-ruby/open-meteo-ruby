@@ -9,6 +9,10 @@ ci: format rubocop typecheck test
 console:
   bin/console
 
+# Run the example script
+example:
+  bundle exec ruby example.rb
+
 # Format files with Prettier
 format:
   bundle exec rbprettier --write '**/*.{graphql,rb,json,yml,md}'
