@@ -8,10 +8,10 @@ module OpenMeteo
       class General
         attr_reader :current, :hourly, :daily
 
-        def initialize(current:, hourly:, daily:)
-          @current = current
-          @hourly = hourly
-          @daily = daily
+        def initialize(params = {})
+          @current = params[:current] || []
+          @hourly = params[:hourly] || []
+          @daily = params[:daily] || []
         end
 
         def validate
