@@ -3,7 +3,7 @@ default:
   just --list
 
 # Run all checks from CI
-ci: format rubocop test
+ci: format rubocop typecheck test
 
 # Start an IRB console with the OpenMeteo Ruby files loaded
 console:
@@ -22,6 +22,17 @@ lint: rubocop
 rubocop-fix:
   bundle exec rubocop -a
 
+# Install the yard docs needed for Solargraph to work better
+solargraph-setup:
+  yard gems
+
+# Run the Ruby solargraph typechecker
+solargraph-typecheck: typecheck
+
 # Run the RSpec tests
 test:
   bundle exec rspec
+
+# Run the Ruby solargraph typechecker
+typecheck:
+  bundle exec solargraph typecheck
