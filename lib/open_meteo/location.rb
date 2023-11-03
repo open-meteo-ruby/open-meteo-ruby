@@ -1,3 +1,5 @@
+require_relative "location_contract"
+
 module OpenMeteo
   ##
   # A location for a request to OpenMeteo.
@@ -6,8 +8,7 @@ module OpenMeteo
     attribute :longitude, OpenMeteo::Types::Strict::Float
 
     def validate!
-      # FIXME: Placeholder for validation
-      true
+      LocationContract.validate!(to_hash)
     end
 
     def to_get_params

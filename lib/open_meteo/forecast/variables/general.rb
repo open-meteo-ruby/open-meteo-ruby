@@ -1,3 +1,5 @@
+require_relative "general_contract"
+
 module OpenMeteo
   class Forecast
     module Variables
@@ -8,20 +10,19 @@ module OpenMeteo
       class General < Dry::Struct
         attribute(
           :current,
-          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([]),
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
         )
         attribute(
           :hourly,
-          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([]),
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
         )
         attribute(
           :daily,
-          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([]),
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
         )
 
-        def validate
-          # FIXME: Placeholder for validation
-          true
+        def validate!
+          GeneralContract.validate!(to_hash)
         end
 
         def to_get_params

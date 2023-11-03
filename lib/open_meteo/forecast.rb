@@ -22,7 +22,7 @@ module OpenMeteo
       model_definition = get_model_definition(model)
 
       variables_object = model_definition[:variables_class].new(**variables)
-      variables_object.validate
+      variables_object.validate!
 
       get_forecast(model_definition[:endpoint], location, variables_object)
     end
