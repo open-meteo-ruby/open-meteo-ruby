@@ -1,5 +1,6 @@
-# frozen_string_literal: true
-
+require "byebug"
+require "pry"
+require "pry-byebug"
 require "simplecov"
 
 SimpleCov.start do

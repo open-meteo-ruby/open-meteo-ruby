@@ -5,14 +5,19 @@ module OpenMeteo
       # The Variables for a general request (meaning without a specific model) to the OpenMeteo API.
       #
       # See https://open-meteo.com/en/docs
-      class General
-        attr_reader :current, :hourly, :daily
-
-        def initialize(params = {})
-          @current = params[:current] || []
-          @hourly = params[:hourly] || []
-          @daily = params[:daily] || []
-        end
+      class General < Dry::Struct
+        attribute(
+          :current,
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([]),
+        )
+        attribute(
+          :hourly,
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([]),
+        )
+        attribute(
+          :daily,
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([]),
+        )
 
         def validate
           # FIXME: Placeholder for validation

@@ -7,14 +7,6 @@ RSpec.describe OpenMeteo::Forecast::Variables::General do
   describe "#to_get_params" do
     subject { variables.to_get_params }
 
-    context "when all variables are nil" do
-      let(:current) { nil }
-      let(:hourly) { nil }
-      let(:daily) { nil }
-
-      it { is_expected.to eq({}) }
-    end
-
     context "when all variables are empty" do
       let(:current) { [] }
       let(:hourly) { [] }
