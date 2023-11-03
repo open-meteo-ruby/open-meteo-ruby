@@ -1,19 +1,31 @@
 RSpec.describe OpenMeteo::Forecast::Variables::General do
   let(:variables) { described_class.new(current:, hourly:, daily:) }
-  let(:current) { nil }
-  let(:hourly) { nil }
-  let(:daily) { nil }
+  let(:current) { [] }
+  let(:hourly) { [] }
+  let(:daily) { [] }
+
+  describe "#validate!" do
+    context "when the current array contains only valid symbols" do
+      let(:current) { %i[apparent_temperature cloudcover] }
+
+      it "does not raise an error" do
+        expect { variables.validate! }.not_to raise_error
+      end
+    end
+
+    context "when the current array contains an invalid symbol" do
+      let(:current) { %i[invalid] }
+
+      it "raises an error" do
+        expect { variables.validate! }.to raise_error(
+          OpenMeteo::ApplicationContract::ValidationError,
+        )
+      end
+    end
+  end
 
   describe "#to_get_params" do
     subject { variables.to_get_params }
-
-    context "when all variables are nil" do
-      let(:current) { nil }
-      let(:hourly) { nil }
-      let(:daily) { nil }
-
-      it { is_expected.to eq({}) }
-    end
 
     context "when all variables are empty" do
       let(:current) { [] }

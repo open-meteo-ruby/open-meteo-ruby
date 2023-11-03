@@ -1,11 +1,16 @@
-# frozen_string_literal: true
-
+require "byebug"
+require "pry"
+require "pry-byebug"
 require "simplecov"
 
 SimpleCov.start do
   enable_coverage :branch
   primary_coverage :branch
   minimum_coverage 99
+
+  # DryValidation contracts are not covered by SimpleCov even if there
+  # are tests for it.
+  add_filter "_contract.rb"
 end
 
 require "open_meteo"

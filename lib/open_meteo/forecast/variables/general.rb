@@ -1,3 +1,5 @@
+require_relative "general_contract"
+
 module OpenMeteo
   class Forecast
     module Variables
@@ -5,18 +7,22 @@ module OpenMeteo
       # The Variables for a general request (meaning without a specific model) to the OpenMeteo API.
       #
       # See https://open-meteo.com/en/docs
-      class General
-        attr_reader :current, :hourly, :daily
+      class General < Dry::Struct
+        attribute(
+          :current,
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
+        )
+        attribute(
+          :hourly,
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
+        )
+        attribute(
+          :daily,
+          OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
+        )
 
-        def initialize(params = {})
-          @current = params[:current] || []
-          @hourly = params[:hourly] || []
-          @daily = params[:daily] || []
-        end
-
-        def validate
-          # FIXME: Placeholder for validation
-          true
+        def validate!
+          GeneralContract.validate!(to_hash)
         end
 
         def to_get_params
