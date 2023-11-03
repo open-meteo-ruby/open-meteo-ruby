@@ -3,7 +3,11 @@ default:
   just --list
 
 # Run all checks from CI
-ci: rubocop
+ci: format rubocop
+
+# Format files with Prettier
+format:
+  bundle exec rbprettier --write '**/*.{graphql,rb,json,yml,md}'
 
 # Lint the Ruby files with Rubocop
 rubocop:
