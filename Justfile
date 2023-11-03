@@ -12,6 +12,7 @@ format:
 # Lint the Ruby files with Rubocop
 rubocop:
   bundle exec rubocop
+lint: rubocop
 
 # Lint and autofix the Ruby files with Rubocop
 rubocop-fix:
