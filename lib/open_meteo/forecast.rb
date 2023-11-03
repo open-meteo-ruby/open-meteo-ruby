@@ -9,6 +9,8 @@ module OpenMeteo
   class Forecast
     class ForecastModelNotImplemented < StandardError
     end
+    class WrongLocationType < StandardError
+    end
 
     def initialize(client: OpenMeteo::Client.new)
       @client = client
@@ -19,10 +21,10 @@ module OpenMeteo
 
       model_definition = get_model_definition(model)
 
-      variables = model_definition[:variables_class].new(**variables)
-      variables.validate
+      variables_object = model_definition[:variables_class].new(**variables)
+      variables_object.validate
 
-      get_forecast(model_definition[:endpoint], location, variables)
+      get_forecast(model_definition[:endpoint], location, variables_object)
     end
 
     private
@@ -42,7 +44,7 @@ module OpenMeteo
     end
 
     def ensure_valid_location(location)
-      raise "Not an OpenMeteo::Location" unless location.is_a? OpenMeteo::Location
+      raise WrongLocationType unless location.is_a? OpenMeteo::Location
 
       location.validate!
     end

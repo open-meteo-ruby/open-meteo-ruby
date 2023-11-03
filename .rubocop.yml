@@ -10,6 +10,8 @@ AllCops:
 
 RSpec/BeNil:
   EnforcedStyle: be
+RSpec/Rails/HaveHttpStatus:
+  Enabled: false
 
 Style/FrozenStringLiteralComment:
   Enabled: false

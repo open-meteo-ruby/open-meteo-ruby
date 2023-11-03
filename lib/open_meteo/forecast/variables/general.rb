@@ -8,10 +8,12 @@ module OpenMeteo
       class General
         attr_reader :current, :hourly, :daily
 
-        def initialize(current:, hourly:, daily:)
-          @current = current
-          @hourly = hourly
-          @daily = daily
+        def initialize(params = {})
+          raise "Params needs to be a Hash" unless params.is_a? Hash
+
+          @current = params[:current] || []
+          @hourly = params[:hourly] || []
+          @daily = params[:daily] || []
         end
 
         def validate
