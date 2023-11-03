@@ -5,6 +5,10 @@ default:
 # Run all checks from CI
 ci: format rubocop
 
+# Start an IRB console with the OpenMeteo Ruby files loaded
+console:
+  bin/console
+
 # Format files with Prettier
 format:
   bundle exec rbprettier --write '**/*.{graphql,rb,json,yml,md}'
