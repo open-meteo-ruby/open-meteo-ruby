@@ -17,6 +17,10 @@ example:
 format:
   bundle exec rbprettier --write '**/*.{graphql,rb,json,yml,md}'
 
+# Build open-meteo gem
+gem-build:
+  gem build open-meteo.gemspec
+
 # Lint the Ruby files with Rubocop
 rubocop:
   bundle exec rubocop
