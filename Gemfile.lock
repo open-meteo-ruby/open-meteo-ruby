@@ -82,10 +82,6 @@ GEM
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
-    prettier (4.0.2)
-      syntax_tree (>= 4.0.1)
-      syntax_tree-haml (>= 2.0.0)
-      syntax_tree-rbs (>= 0.2.0)
     prettier_print (1.2.1)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -185,7 +181,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   open-meteo!
-  prettier
+  prettier_print
   pry
   pry-byebug
   rake (~> 13.0)
@@ -195,6 +191,9 @@ DEPENDENCIES
   rubocop-rspec
   simplecov
   solargraph
+  syntax_tree
+  syntax_tree-haml
+  syntax_tree-rbs
 
 BUNDLED WITH
    2.4.10
