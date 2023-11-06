@@ -3,10 +3,14 @@ module OpenMeteo
     ##
     # The configuration for the OpenMeteo::Client.
     class Config
-      attr_reader :host
+      attr_reader :host, :logger
 
-      def initialize(host: "api.open-meteo.com")
+      def initialize(
+        host: "api.open-meteo.com",
+        logger: Logger.new("open_meteo.log")
+      )
         @host = host
+        @logger = logger
       end
 
       def url

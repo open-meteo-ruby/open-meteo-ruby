@@ -12,7 +12,9 @@ module OpenMeteo
     class WrongLocationType < StandardError
     end
 
-    def initialize(client: OpenMeteo::Client.new)
+    def initialize(
+      client: OpenMeteo::Client.new
+    )
       @client = client
     end
 

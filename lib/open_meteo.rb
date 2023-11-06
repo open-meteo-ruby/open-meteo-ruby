@@ -1,3 +1,5 @@
 require "open_meteo/types"
 require "open_meteo/entities/location"
 require "open_meteo/forecast"
+require "open_meteo/response_wrapper"
+require "open_meteo/errors"
