@@ -1,0 +1,15 @@
+{
+  "name": "open-meteo-ruby",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:open-meteo-ruby/open-meteo-ruby.git",
+  "author": "Peter Morgenstern <mail@petergundel.de>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --plugin=@prettier/plugin-ruby --write '**/*.{graphql,rb,json,yml,md}'"
+  },
+  "devDependencies": {
+    "@prettier/plugin-ruby": "^4.0.2",
+    "prettier": "^3.0.3"
+  }
+}

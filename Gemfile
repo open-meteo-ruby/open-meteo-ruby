@@ -3,13 +3,19 @@ source "https://rubygems.org"
 gemspec
 
 gem "byebug"
-gem "prettier"
 gem "pry"
 gem "pry-byebug"
 gem "rake", "~> 13.0"
 gem "rspec", "~> 3.0"
+gem "simplecov"
+gem "solargraph"
+
 gem "rubocop"
 gem "rubocop-rake"
 gem "rubocop-rspec"
-gem "simplecov"
-gem "solargraph"
+
+# Prettier
+gem "prettier_print"
+gem "syntax_tree"
+gem "syntax_tree-haml"
+gem "syntax_tree-rbs"
