@@ -7,7 +7,7 @@ RSpec.describe OpenMeteo::Forecast do
   describe "#get" do
     subject(:forecast_get) { forecast.get(location:, variables:, model:) }
 
-    let(:location) { OpenMeteo::Location.new(longitude: 1.1, latitude: 2.2) }
+    let(:location) { OpenMeteo::Entities::Location.new(longitude: 1.1, latitude: 2.2) }
     let(:variables) { {} }
     let(:model) { :general }
 
@@ -19,7 +19,7 @@ RSpec.describe OpenMeteo::Forecast do
       end
     end
 
-    context "when the location is not an OpenMeteo::Location" do
+    context "when the location is not an OpenMeteo::Entities::Location" do
       let(:location) { :something }
 
       it "raises an error" do

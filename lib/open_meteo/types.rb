@@ -2,7 +2,7 @@ require "dry-types"
 require "dry-struct"
 require "dry-validation"
 
-require_relative "application_contract"
+require_relative "entities/contracts/application_contract"
 
 module OpenMeteo
   ##

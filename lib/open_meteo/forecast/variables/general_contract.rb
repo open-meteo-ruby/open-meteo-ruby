@@ -8,7 +8,7 @@ module OpenMeteo
       #
       # Don't validate variables as they will grow all the time.
       # See https://github.com/open-meteo/open-meteo-website/issues/40
-      class GeneralContract < OpenMeteo::ApplicationContract
+      class GeneralContract < OpenMeteo::Entities::Contracts::ApplicationContract
         params do
           required(:current).array(:symbol)
           required(:hourly).array(:symbol)
