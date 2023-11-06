@@ -1,4 +1,4 @@
-RSpec.describe OpenMeteo::Location do
+RSpec.describe OpenMeteo::Entities::Location do
   let(:location) { described_class.new(latitude:, longitude:) }
   let(:latitude) { nil }
   let(:longitude) { nil }

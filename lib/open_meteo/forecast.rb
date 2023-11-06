@@ -44,7 +44,7 @@ module OpenMeteo
     end
 
     def ensure_valid_location(location)
-      raise WrongLocationType unless location.is_a? OpenMeteo::Location
+      raise WrongLocationType unless location.is_a? OpenMeteo::Entities::Location
 
       location.validate!
     end

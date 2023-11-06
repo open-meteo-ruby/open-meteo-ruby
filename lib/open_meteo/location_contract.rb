@@ -1,6 +1,6 @@
 module OpenMeteo
   ##
-  # Validation contract for OpenMeteo::Location.
+  # Validation contract for OpenMeteo::Entities::Location.
   class LocationContract < OpenMeteo::ApplicationContract
     params do
       required(:latitude).filled(:float)
