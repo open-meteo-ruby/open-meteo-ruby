@@ -1,26 +1,8 @@
-RSpec.describe OpenMeteo::Forecast::Variables::General do
+RSpec.describe OpenMeteo::Forecast::Variables do
   let(:variables) { described_class.new(current:, hourly:, daily:) }
   let(:current) { [] }
   let(:hourly) { [] }
   let(:daily) { [] }
-
-  describe "#validate!" do
-    context "when the current array contains only symbols" do
-      let(:current) { %i[apparent_temperature cloudcover] }
-
-      it "does not raise an error" do
-        expect { variables.validate! }.not_to raise_error
-      end
-    end
-
-    context "when the current array contains strings" do
-      let(:current) { [:something, "invalid"] }
-
-      it "raises an error" do
-        expect { variables.validate! }.to raise_error(Dry::Struct::Error)
-      end
-    end
-  end
 
   describe "#to_get_params" do
     subject { variables.to_get_params }

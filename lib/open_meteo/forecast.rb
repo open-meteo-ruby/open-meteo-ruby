@@ -1,5 +1,5 @@
 require_relative "client"
-require_relative "forecast/variables/general"
+require_relative "variables"
 
 module OpenMeteo
   ##
@@ -21,8 +21,7 @@ module OpenMeteo
 
       model_definition = get_model_definition(model)
 
-      variables_object = model_definition[:variables_class].new(**variables)
-      variables_object.validate!
+      variables_object = OpenMeteo::Forecast::Variables.new(**variables)
 
       get_forecast(model_definition[:endpoint], location, variables_object)
     end
@@ -34,7 +33,6 @@ module OpenMeteo
     AVAILABLE_FORECAST_MODELS = {
       general: {
         # See https://open-meteo.com/en/docs
-        variables_class: OpenMeteo::Forecast::Variables::General,
         endpoint: :forecast,
       },
     }.freeze
