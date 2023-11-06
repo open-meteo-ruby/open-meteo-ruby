@@ -5,7 +5,7 @@ RSpec.describe OpenMeteo::Forecast::Variables::General do
   let(:daily) { [] }
 
   describe "#validate!" do
-    context "when the current array contains only valid symbols" do
+    context "when the current array contains only symbols" do
       let(:current) { %i[apparent_temperature cloudcover] }
 
       it "does not raise an error" do
@@ -13,13 +13,11 @@ RSpec.describe OpenMeteo::Forecast::Variables::General do
       end
     end
 
-    context "when the current array contains an invalid symbol" do
-      let(:current) { %i[invalid] }
+    context "when the current array contains strings" do
+      let(:current) { [:something, "invalid"] }
 
       it "raises an error" do
-        expect { variables.validate! }.to raise_error(
-          OpenMeteo::ApplicationContract::ValidationError,
-        )
+        expect { variables.validate! }.to raise_error(Dry::Struct::Error)
       end
     end
   end

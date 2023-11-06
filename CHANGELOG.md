@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Don't validate variables, see https://github.com/open-meteo/open-meteo-website/issues/40
+
 ## [0.0.3] - 2023-11-03
 
 - Use [`dry-validation`](https://github.com/dry-rb/dry-validation) to validate data classes
