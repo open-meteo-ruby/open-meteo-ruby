@@ -7,10 +7,8 @@ module OpenMeteo
   #
   # See https://open-meteo.com/en/docs
   class Forecast
-    class ForecastModelNotImplemented < StandardError
-    end
-    class WrongLocationType < StandardError
-    end
+    class ForecastModelNotImplemented < StandardError; end
+    class WrongLocationType < StandardError; end
 
     def initialize(client: OpenMeteo::Client.new)
       @client = client

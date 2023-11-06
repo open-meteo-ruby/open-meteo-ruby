@@ -7,10 +7,8 @@ module OpenMeteo
   ##
   # The client that makes the actual requests to the OpenMeteo API.
   class Client
-    class ConnectionFailed < StandardError
-    end
-    class Timeout < StandardError
-    end
+    class ConnectionFailed < StandardError; end
+    class Timeout < StandardError; end
 
     attr_reader :api_config
 

@@ -15,7 +15,7 @@ example:
 
 # Format files with Prettier
 format:
-  bundle exec rbprettier --write '**/*.{graphql,rb,json,yml,md}'
+  bundle exec rufo .
 
 # Build open-meteo gem
 gem-build:
