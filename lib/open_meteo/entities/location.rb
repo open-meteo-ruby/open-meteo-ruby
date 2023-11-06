@@ -1,4 +1,4 @@
-require_relative "../location_contract"
+require_relative "contracts/location_contract"
 
 module OpenMeteo
   module Entities
@@ -9,7 +9,7 @@ module OpenMeteo
       attribute :longitude, OpenMeteo::Types::Strict::Float
 
       def validate!
-        OpenMeteo::LocationContract.validate!(to_hash)
+        OpenMeteo::Entities::Contracts::LocationContract.validate!(to_hash)
       end
 
       def to_get_params
