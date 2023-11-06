@@ -23,7 +23,7 @@ jobs:
           node-version-file: ".node-version"
           cache: "yarn"
       - run: yarn install --frozen-lockfile
-      - run: yarn format
+      - run: yarn format:ci
   Tests:
     name: "Test with Ruby ${{ matrix.ruby }}"
     strategy:
