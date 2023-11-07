@@ -12,9 +12,20 @@ Layout/LineLength:
   Max: 200
   Enabled: true
 
+Metrics/MethodLength:
+  Max: 20
+  Enabled: true
+
 RSpec/BeNil:
   EnforcedStyle: be
 RSpec/Rails/HaveHttpStatus:
+  Enabled: false
+RSpec/ExampleLength:
+  Max: 20
+  Enabled: true
+RSpec/MultipleExpectations:
+  Enabled: false
+RSpec/NestedGroups:
   Enabled: false
 
 Style/FrozenStringLiteralComment:

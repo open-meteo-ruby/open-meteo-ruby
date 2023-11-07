@@ -1,5 +1,5 @@
 require_relative "client"
-require_relative "variables"
+require_relative "forecast/variables"
 
 module OpenMeteo
   ##
@@ -12,9 +12,7 @@ module OpenMeteo
     class WrongLocationType < StandardError
     end
 
-    def initialize(
-      client: OpenMeteo::Client.new
-    )
+    def initialize(client: OpenMeteo::Client.new)
       @client = client
     end
 
