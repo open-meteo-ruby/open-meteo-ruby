@@ -5,8 +5,8 @@ module OpenMeteo
     ##
     # A location for a request to OpenMeteo.
     class Location < Dry::Struct
-      attribute :latitude, OpenMeteo::Types::Strict::Float
-      attribute :longitude, OpenMeteo::Types::Strict::Float
+      attribute :latitude, OpenMeteo::Types::Coercible::Decimal
+      attribute :longitude, OpenMeteo::Types::Coercible::Decimal
 
       def validate!
         OpenMeteo::Entities::Contracts::LocationContract.validate!(to_hash)
