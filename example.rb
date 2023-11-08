@@ -1,8 +1,10 @@
 require "open_meteo"
 
+OpenMeteo.configure { |config| config.logger = Logger.new("open_meteo.log") }
+
 client = OpenMeteo::Client.new(agent: Faraday.new { |conn| conn.response :logger })
 
-location = OpenMeteo::Entities::Location.new(longitude: 52.52, latitude: 13.41)
+location = OpenMeteo::Entities::Location.new(latitude: 52.52.to_d, longitude: 13.41.to_d)
 variables = { current: %i[], hourly: %i[weather_code temperature_2m], daily: %i[] }
 forecast_response = OpenMeteo::Forecast.new(client:).get(location:, variables:)
 

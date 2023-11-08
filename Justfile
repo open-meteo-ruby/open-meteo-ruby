@@ -37,3 +37,7 @@ solargraph-setup:
 # Run the RSpec tests
 test:
   bundle exec rspec
+
+# Run the RSpec tests and open the coverage report
+test-open-coverage:
+  bundle exec rspec; open coverage/index.html
