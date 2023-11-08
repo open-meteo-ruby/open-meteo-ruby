@@ -1,8 +1,12 @@
 RSpec.describe OpenMeteo::Forecast do
-  subject(:forecast) { described_class.new(client:) }
+  subject(:forecast) { described_class.new(client:, response_wrapper:) }
 
-  let(:client) { instance_double(OpenMeteo::Client) }
+  let(:client) do
+    instance_double(OpenMeteo::Client, api_config: instance_double(OpenMeteo::Client::Config))
+  end
+  let(:response_wrapper) { instance_double(OpenMeteo::ResponseWrapper) }
   let(:faraday_response) { instance_double(Faraday::Response) }
+  let(:forecast_entity) { instance_double(OpenMeteo::Entities::Forecast) }
 
   describe "#get" do
     subject(:forecast_get) { forecast.get(location:, variables:, model:) }
@@ -38,10 +42,14 @@ RSpec.describe OpenMeteo::Forecast do
           hourly: "apparent_temperature",
           daily: "apparent_temperature_max",
         ).and_return(faraday_response)
+        allow(response_wrapper).to receive(:wrap).with(
+          faraday_response,
+          entity: OpenMeteo::Entities::Forecast,
+        ).and_return(forecast_entity)
       end
 
       it "calls the client" do
-        expect(forecast_get).to eq(faraday_response)
+        expect(forecast_get).to eq(forecast_entity)
       end
     end
   end

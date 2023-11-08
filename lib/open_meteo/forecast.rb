@@ -12,8 +12,9 @@ module OpenMeteo
     class WrongLocationType < StandardError
     end
 
-    def initialize(client: OpenMeteo::Client.new)
+    def initialize(client: OpenMeteo::Client.new, response_wrapper: OpenMeteo::ResponseWrapper.new)
       @client = client
+      @response_wrapper = response_wrapper
     end
 
     def get(location:, variables:, model: :general)
@@ -49,7 +50,9 @@ module OpenMeteo
 
     def get_forecast(endpoint, location, variables)
       get_params = { **location.to_get_params, **variables.to_get_params }
-      client.get(endpoint, **get_params)
+      response = client.get(endpoint, **get_params)
+
+      @response_wrapper.wrap(response, entity: OpenMeteo::Entities::Forecast)
     end
   end
 end

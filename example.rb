@@ -6,11 +6,8 @@ client = OpenMeteo::Client.new(agent: Faraday.new { |conn| conn.response :logger
 
 location = OpenMeteo::Entities::Location.new(latitude: 52.52.to_d, longitude: 13.41.to_d)
 variables = { current: %i[], hourly: %i[weather_code temperature_2m], daily: %i[] }
-forecast_response = OpenMeteo::Forecast.new(client:).get(location:, variables:)
+data = OpenMeteo::Forecast.new(client:).get(location:, variables:)
 
-data = OpenMeteo::ResponseWrapper.new.wrap(forecast_response, entity: OpenMeteo::Entities::Forecast)
-
-puts "Status: #{forecast_response.status}"
 puts data
 puts data.current
 puts data.daily
