@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.1.0] - 2023-11-08
+
 - Don't validate variables, see https://github.com/open-meteo/open-meteo-website/issues/40
 - Return data in the shape of understandable and manageable entities
 - Change Location latitude/longitude types to coercible decimals
