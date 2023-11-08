@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Wrap the response of OpenMeteo::Forecast to get back an OpenMeteo::Entities::Forecast entity
+
 ## [0.1.0] - 2023-11-08
 
 - Don't validate variables, see https://github.com/open-meteo/open-meteo-website/issues/40
