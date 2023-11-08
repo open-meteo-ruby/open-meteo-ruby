@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Don't validate variables, see https://github.com/open-meteo/open-meteo-website/issues/40
+- Return data in the shape of understandable and manageable entities
 
 ## [0.0.3] - 2023-11-03
 
