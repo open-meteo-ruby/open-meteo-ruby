@@ -1,5 +1,5 @@
 require_relative "client"
-require_relative "variables"
+require_relative "forecast/variables"
 
 module OpenMeteo
   ##
