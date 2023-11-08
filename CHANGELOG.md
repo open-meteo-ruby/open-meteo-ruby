@@ -6,7 +6,7 @@
 - Return data in the shape of understandable and manageable entities
 - Change Location latitude/longitude types to coercible decimals
 - Create a global configuration object
-- Add OpenMeteo::Entities::Forecast::Item#weathercode_symbol
+- Add OpenMeteo::Entities::Forecast::Item#weather_code_symbol
 
 ## [0.0.3] - 2023-11-03
 

@@ -4,11 +4,11 @@ module OpenMeteo
       ##
       # A forecast entity for a data item returned by OpenMeteo
       class Item
-        class UnknownWeathercode < StandardError
+        class UnknownWeatherCode < StandardError
         end
 
         ##
-        # The conversion map of weathercodes to a more descriptive symbol.
+        # The conversion map of weather_codes to a more descriptive symbol.
         #
         # See "WMO Weather interpretation codes (WW)" on
         # https://open-meteo.com/en/docs
@@ -53,13 +53,13 @@ module OpenMeteo
         end
 
         ##
-        # Provide a symbol for the weathercode.
+        # Provide a symbol for the weather_code.
         #
         # @see WMO_CODE_TO_SYMBOL_MAP
-        def weathercode_symbol
-          return if weathercode.nil?
+        def weather_code_symbol
+          return if weather_code.nil?
 
-          WMO_CODE_TO_SYMBOL_MAP.fetch(weathercode) { raise UnknownWeathercode, weathercode }
+          WMO_CODE_TO_SYMBOL_MAP.fetch(weather_code) { raise UnknownWeatherCode, weather_code }
         end
 
         private

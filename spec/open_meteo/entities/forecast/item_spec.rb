@@ -6,13 +6,13 @@ RSpec.describe OpenMeteo::Entities::Forecast::Item do
       "time" => "2023-11-07T13:00",
       "interval" => 900,
       "temperature_2m" => 27.0,
-      "weathercode" => weathercode,
+      "weather_code" => weather_code,
     }
   end
-  let(:weathercode) { 0 }
+  let(:weather_code) { 0 }
 
   it "respond to attributes" do
-    expect(item.attributes).to eq(%w[time interval temperature_2m weathercode])
+    expect(item.attributes).to eq(%w[time interval temperature_2m weather_code])
   end
 
   it "respond to each attribute method" do
@@ -30,28 +30,28 @@ RSpec.describe OpenMeteo::Entities::Forecast::Item do
     expect { item.whatever }.to raise_error(NoMethodError)
   end
 
-  describe "#weathercode_symbol" do
+  describe "#weather_code_symbol" do
     context "when the weahtercode is nil" do
-      let(:weathercode) { nil }
+      let(:weather_code) { nil }
 
       it "returns nil" do
-        expect(item.weathercode_symbol).to be nil
+        expect(item.weather_code_symbol).to be nil
       end
     end
 
-    context "when the weathercode exists" do
-      let(:weathercode) { 0 }
+    context "when the weather_code exists" do
+      let(:weather_code) { 0 }
 
       it "returns the corresponding symvol" do
-        expect(item.weathercode_symbol).to eq(:clear_sky)
+        expect(item.weather_code_symbol).to eq(:clear_sky)
       end
     end
 
-    context "when the weathercode doesn't exist" do
-      let(:weathercode) { 100 }
+    context "when the weather_code doesn't exist" do
+      let(:weather_code) { 100 }
 
       it "raises an error" do
-        expect { item.weathercode_symbol }.to raise_error described_class::UnknownWeathercode
+        expect { item.weather_code_symbol }.to raise_error described_class::UnknownWeatherCode
       end
     end
   end
