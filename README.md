@@ -25,7 +25,7 @@ end
 forecast = OpenMeteo::Forecast.new
 
 location = OpenMeteo::Entities::Location.new(latitude: 52.52, longitude: 13.41)
-variables = { current: %i[weathercode], hourly: %i[], daily: %i[] }
+variables = { current: %i[weather_code], hourly: %i[], daily: %i[] }
 forecast_response = forecast.get(location:, variables:)
 ```
 
@@ -43,7 +43,7 @@ client = OpenMeteo::Client.new(api_config:)
 forecast = OpenMeteo::Forecast.new(client:)
 
 location = OpenMeteo::Entities::Location.new(latitude: 52.52, longitude: 13.41)
-variables = { current: %i[weathercode], hourly: %i[], daily: %i[] }
+variables = { current: %i[weather_code], hourly: %i[], daily: %i[] }
 forecast_response = forecast.get(location:, variables:)
 ```
 
