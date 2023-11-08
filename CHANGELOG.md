@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2023-11-08
+
 - Wrap the response of OpenMeteo::Forecast to get back an OpenMeteo::Entities::Forecast entity
 
 ## [0.1.0] - 2023-11-08
