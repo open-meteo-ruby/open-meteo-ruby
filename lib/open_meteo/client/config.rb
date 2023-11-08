@@ -5,9 +5,9 @@ module OpenMeteo
     class Config
       attr_reader :host, :logger
 
-      def initialize(host: "api.open-meteo.com", logger: Logger.new("open_meteo.log"))
-        @host = host
-        @logger = logger
+      def initialize(host: nil, logger: nil)
+        @host = host || OpenMeteo.configuration.host
+        @logger = logger || OpenMeteo.configuration.logger
       end
 
       def url
