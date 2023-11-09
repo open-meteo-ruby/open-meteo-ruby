@@ -1,8 +1,18 @@
 # Ruby client for [OpenMeteo](https://github.com/open-meteo/open-meteo)
 
-... in progress.
-
 > NOTE: [There is a plan to create official SDKs](https://github.com/open-meteo/open-meteo-website/issues/40) via [FlatBuffers](https://flatbuffers.dev/). However, I couldn't find a Ruby implementation of FlatBuffers in general. Hence, most likely, there won't be a Ruby SDK in the near future.
+
+## Usage
+
+```ruby
+require "open_meteo"
+
+location = OpenMeteo::Entities::Location.new(latitude: 52.52.to_d, longitude: 13.41.to_d)
+variables = { current: %i[], hourly: %i[weather_code], daily: %i[] }
+data = OpenMeteo::Forecast.new.get(location:, variables:)
+
+data.hourly.items.each { |item| puts item.weather_code_symbol }
+```
 
 ## Configuration
 
