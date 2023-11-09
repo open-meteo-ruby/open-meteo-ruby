@@ -9,6 +9,9 @@
   <a href="https://codecov.io/gh/open-meteo-ruby/open-meteo-ruby">
     <img alt="CodeCov" src="https://codecov.io/gh/open-meteo-ruby/open-meteo-ruby/branch/main/graph/badge.svg?token=V5HKH4C2BA" \>
   </a>
+  <a href="https://rubygems.org/gems/open-meteo">
+    <img src="https://badge.fury.io/rb/open-meteo.svg" alt="Gem Version" height="18">
+  </a>
 </p>
 
 <p align="center">
