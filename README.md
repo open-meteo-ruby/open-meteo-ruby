@@ -1,4 +1,19 @@
-# Ruby client for [OpenMeteo](https://github.com/open-meteo/open-meteo)
+<h1 align="center">
+  Ruby client for <a href="https://github.com/open-meteo/open-meteo">OpenMeteo</a>
+</h1>
+
+<p align="center">
+  <a href="https://github.com/open-meteo-ruby/open-meteo-ruby/actions?query=branch%3Amain+">
+    <img alt="CI" src="https://github.com/open-meteo-ruby/open-meteo-ruby/actions/workflows/ci.yml/badge.svg" \>
+  </a>
+  <a href="https://codecov.io/gh/open-meteo-ruby/open-meteo-ruby">
+    <img alt="CodeCov" src="https://codecov.io/gh/open-meteo-ruby/open-meteo-ruby/branch/main/graph/badge.svg?token=V5HKH4C2BA" \>
+  </a>
+</p>
+
+<p align="center">
+  This client library lets you easily connect to the <a href="https://open-meteo.com/">OpenMeteo API</a>.
+</p>
 
 > NOTE: [There is a plan to create official SDKs](https://github.com/open-meteo/open-meteo-website/issues/40) via [FlatBuffers](https://flatbuffers.dev/). However, I couldn't find a Ruby implementation of FlatBuffers in general. Hence, most likely, there won't be a Ruby SDK in the near future.
 
