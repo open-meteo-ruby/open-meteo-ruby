@@ -21,6 +21,9 @@ Naming/VariableNumber:
 
 RSpec/BeNil:
   EnforcedStyle: be
+RSpec/DescribeClass:
+  Exclude:
+    - spec/open_meteo/integration/**/*
 RSpec/Rails/HaveHttpStatus:
   Enabled: false
 RSpec/ExampleLength:

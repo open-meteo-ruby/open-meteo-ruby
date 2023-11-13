@@ -9,6 +9,7 @@ gem "rake", "~> 13.0"
 gem "rspec", "~> 3.0"
 gem "simplecov"
 gem "solargraph"
+gem "vcr"
 
 gem "rubocop"
 gem "rubocop-rake"

@@ -15,6 +15,8 @@ end
 
 require "open_meteo"
 
+require_relative "support/vcr"
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = ".rspec_status"
