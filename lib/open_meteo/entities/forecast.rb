@@ -1,4 +1,5 @@
 require_relative "forecast/current"
+require_relative "forecast/minutely_15"
 require_relative "forecast/hourly"
 require_relative "forecast/daily"
 require_relative "forecast/units"
@@ -9,28 +10,26 @@ module OpenMeteo
     #
     # A forecast Entity with data returned by OpenMeteo
     class Forecast
-      attr_reader :attributes, :current, :hourly, :daily, :raw_json
+      attr_reader :attributes, :current, :minutely_15, :hourly, :daily, :raw_json
 
       def initialize(json_body)
         @raw_json = json_body
 
-        @current =
-          json_body["current"] &&
-            OpenMeteo::Entities::Forecast::Current.new(
-              json_body["current"],
-              json_body["current_units"],
-            )
-        @hourly =
-          json_body["hourly"] &&
-            OpenMeteo::Entities::Forecast::Hourly.new(
-              json_body["hourly"],
-              json_body["hourly_units"],
-            )
-        @daily =
-          json_body["daily"] &&
-            OpenMeteo::Entities::Forecast::Daily.new(json_body["daily"], json_body["daily_units"])
+        set_data(json_body, :current, OpenMeteo::Entities::Forecast::Current)
+        set_data(json_body, :minutely_15, OpenMeteo::Entities::Forecast::Minutely15)
+        set_data(json_body, :hourly, OpenMeteo::Entities::Forecast::Hourly)
+        set_data(json_body, :daily, OpenMeteo::Entities::Forecast::Daily)
 
         @attributes = json_body.keys
+      end
+
+      def set_data(json_body, type, klass)
+        return if json_body[type.to_s].nil?
+
+        instance_variable_set(
+          "@#{type}",
+          klass.new(json_body[type.to_s], json_body["#{type}_units"]),
+        )
       end
     end
   end

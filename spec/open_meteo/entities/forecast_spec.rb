@@ -28,6 +28,7 @@ RSpec.describe OpenMeteo::Entities::Forecast do
 
     it "includes current data" do
       expect(forecast.current).to be_instance_of(OpenMeteo::Entities::Forecast::Current)
+      expect(forecast.minutely_15).to be(nil)
       expect(forecast.hourly).to be(nil)
       expect(forecast.daily).to be(nil)
     end
@@ -45,6 +46,37 @@ RSpec.describe OpenMeteo::Entities::Forecast do
         current
       ]
       expect(forecast.attributes).to eq(attributes)
+    end
+  end
+
+  context "when minutely_15 data" do
+    let(:json_body) do
+      {
+        "latitude" => 13.375,
+        "longitude" => 52.5,
+        "generationtime_ms" => 0.024080276489257812,
+        "utc_offset_seconds" => 0,
+        "timezone" => "GMT",
+        "timezone_abbreviation" => "GMT",
+        "elevation" => 0.0,
+        "hourly_units" => {
+          "time" => "iso8601",
+          "weather_code" => "wmo code",
+          "temperature_2m" => "°C",
+        },
+        "minutely_15" => {
+          "time" => %w[2023-11-07T00:00 2023-11-07T01:00],
+          "weather_code" => [3, 3],
+          "temperature_2m" => [26.6, 26.7],
+        },
+      }
+    end
+
+    it "includes minutely_15 data" do
+      expect(forecast.current).to be(nil)
+      expect(forecast.minutely_15).to be_instance_of(OpenMeteo::Entities::Forecast::Minutely15)
+      expect(forecast.hourly).to be(nil)
+      expect(forecast.daily).to be(nil)
     end
   end
 
@@ -72,8 +104,9 @@ RSpec.describe OpenMeteo::Entities::Forecast do
     end
 
     it "includes hourly data" do
-      expect(forecast.hourly).to be_instance_of(OpenMeteo::Entities::Forecast::Hourly)
       expect(forecast.current).to be(nil)
+      expect(forecast.minutely_15).to be(nil)
+      expect(forecast.hourly).to be_instance_of(OpenMeteo::Entities::Forecast::Hourly)
       expect(forecast.daily).to be(nil)
     end
 
@@ -125,9 +158,10 @@ RSpec.describe OpenMeteo::Entities::Forecast do
     end
 
     it "includes hourly data" do
-      expect(forecast.daily).to be_instance_of(OpenMeteo::Entities::Forecast::Daily)
+      expect(forecast.current).to be(nil)
       expect(forecast.current).to be(nil)
       expect(forecast.hourly).to be(nil)
+      expect(forecast.daily).to be_instance_of(OpenMeteo::Entities::Forecast::Daily)
     end
 
     it "respond to attributes" do

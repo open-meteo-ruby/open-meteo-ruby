@@ -5,6 +5,7 @@
 - Add retry logic to the client
 - Add models to forecast variables
 - Add minutely_15 to forecast variables
+- Add minutely_15 to forecast entity
 
 ## [0.2.0] - 2023-11-08
 
