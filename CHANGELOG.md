@@ -6,6 +6,7 @@
 - Add models to forecast variables
 - Add minutely_15 to forecast variables
 - Add minutely_15 to forecast entity
+- Add DWD Icon forecast model
 
 ## [0.2.0] - 2023-11-08
 

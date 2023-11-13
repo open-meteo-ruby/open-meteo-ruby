@@ -36,6 +36,10 @@ module OpenMeteo
         # See https://open-meteo.com/en/docs
         endpoint: :forecast,
       },
+      dwd_icon: {
+        # See https://open-meteo.com/en/docs/dwd-api
+        endpoint: :forecast_dwd_icon,
+      },
     }.freeze
 
     def get_model_definition(model)

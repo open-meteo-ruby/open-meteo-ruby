@@ -3,7 +3,7 @@ module OpenMeteo
     ##
     # The class that constructs the URLs for given endpoints.
     class UrlBuilder
-      API_PATHS = { forecast: "v1/forecast" }.freeze
+      API_PATHS = { forecast: "v1/forecast", forecast_dwd_icon: "v1/dwd-icon" }.freeze
 
       attr_reader :api_config
 
