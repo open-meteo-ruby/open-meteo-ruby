@@ -17,13 +17,17 @@ module OpenMeteo
         :daily,
         OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
       )
+      attribute(
+        :models,
+        OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
+      )
 
       def to_get_params
         get_params = {}
 
-        get_params[:current] = current.join(",") if current != []
-        get_params[:hourly] = hourly.join(",") if hourly != []
-        get_params[:daily] = daily.join(",") if daily != []
+        %i[current hourly daily models].each do |key|
+          get_params[key] = send(key).join(",") if send(key) != []
+        end
 
         get_params
       end
