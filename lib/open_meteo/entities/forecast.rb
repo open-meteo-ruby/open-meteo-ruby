@@ -15,21 +15,29 @@ module OpenMeteo
       def initialize(json_body)
         @raw_json = json_body
 
-        set_data(json_body, :current, OpenMeteo::Entities::Forecast::Current)
-        set_data(json_body, :minutely_15, OpenMeteo::Entities::Forecast::Minutely15)
-        set_data(json_body, :hourly, OpenMeteo::Entities::Forecast::Hourly)
-        set_data(json_body, :daily, OpenMeteo::Entities::Forecast::Daily)
+        init_data_for(OpenMeteo::Entities::Forecast::Current)
+        init_data_for(OpenMeteo::Entities::Forecast::Minutely15)
+        init_data_for(OpenMeteo::Entities::Forecast::Hourly)
+        init_data_for(OpenMeteo::Entities::Forecast::Daily)
 
         @attributes = json_body.keys
       end
 
-      def set_data(json_body, type, klass)
-        return if json_body[type.to_s].nil?
+      private
 
-        instance_variable_set(
-          "@#{type}",
-          klass.new(json_body[type.to_s], json_body["#{type}_units"]),
-        )
+      def init_data_for(klass)
+        name = name_for_klass(klass)
+
+        return if raw_json[name.to_s].nil?
+
+        instance_variable_set("@#{name}", klass.new(raw_json[name.to_s], raw_json["#{name}_units"]))
+      end
+
+      def name_for_klass(klass)
+        # Extract that last part of the class name, e.g. "Minutely15"
+        # from "OpenMeteo::Entities::Forecast::Minutely15"
+        # but as snake_case version e.g. "minutely_15"
+        klass.to_s.split("::").last.downcase.gsub(/(\d+)/, '_\1').to_sym
       end
     end
   end
