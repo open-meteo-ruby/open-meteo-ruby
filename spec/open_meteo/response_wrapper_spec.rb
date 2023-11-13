@@ -127,7 +127,7 @@ RSpec.describe OpenMeteo::ResponseWrapper do
         let(:body) { <<~JSON }
         {
           "error": true,
-          "reason": "Data corrupted at path ''. Cannot initialize ForecastVariableDaily from invalid String value weatherx_code."
+          "reason": "Data corrupted at path ''. Cannot initialize ForecastVariableDaily from invalid String value some_attribute."
         }
         JSON
 
@@ -141,7 +141,7 @@ RSpec.describe OpenMeteo::ResponseWrapper do
           let(:body) { <<~JSON }
           {
             "error": false,
-            "reason": "Data corrupted at path ''. Cannot initialize ForecastVariableDaily from invalid String value weatherx_code."
+            "reason": "Data corrupted at path ''. Cannot initialize ForecastVariableDaily from invalid String value some_attribute."
           }
           JSON
 

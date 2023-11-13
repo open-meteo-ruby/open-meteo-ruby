@@ -1,0 +1,11 @@
+autofix
+ecmwf
+generationtime
+justfile
+klass
+meteo
+morgenstern
+pipefail
+rubocop
+solargraph
+struct

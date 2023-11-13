@@ -3,7 +3,7 @@ default:
   just --list
 
 # Run all checks from CI
-ci: format rubocop test
+ci: spellcheck format rubocop test
 
 # Start an IRB console with the OpenMeteo Ruby files loaded
 console:
@@ -33,6 +33,14 @@ rubocop-fix:
 # Install the yard docs needed for Solargraph to work better
 solargraph-setup:
   yard gems
+
+# Run the spellcheck
+spellcheck:
+  yarn spellcheck
+
+# List words that are unknown to the spellchecker
+spellcheck-list:
+  yarn spellcheck:list
 
 # Run the RSpec tests
 test:

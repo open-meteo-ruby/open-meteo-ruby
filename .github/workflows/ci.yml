@@ -3,6 +3,16 @@ name: CI
 on: [push]
 
 jobs:
+  Spellcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".node-version"
+          cache: "yarn"
+      - run: yarn install --frozen-lockfile
+      - run: yarn spellcheck
   Lint:
     runs-on: ubuntu-latest
     steps:

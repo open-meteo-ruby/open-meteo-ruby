@@ -19,7 +19,7 @@ RSpec.describe OpenMeteo::Entities::Forecast::Units do
     expect(units.respond_to?(:whatever)).to be(false)
   end
 
-  it "raises for unexistent attributes" do
+  it "raises for un-existent attributes" do
     expect { units.whatever }.to raise_error(NoMethodError)
   end
 end

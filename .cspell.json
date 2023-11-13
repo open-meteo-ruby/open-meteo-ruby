@@ -1,0 +1,13 @@
+{
+  "dictionaries": ["custom"],
+  "language": "en,de",
+  "version": "0.1",
+  "dictionaryDefinitions": [
+    {
+      "name": "custom",
+      "path": "./.cspell.dictionary.txt"
+    }
+  ],
+  "ignorePaths": ["coverage", "node_modules", "*.gem", "*.log"],
+  "words": []
+}

@@ -7,6 +7,7 @@ RSpec.describe OpenMeteo::Client::Config do
 
       context "when the global config is set" do
         before { OpenMeteo.configure { |config| config.host = "global-api.example.com" } }
+        after { OpenMeteo.configure { |config| config.host = "api.open-meteo.com" } }
 
         it "uses the global configuration" do
           expect(described_class.new.host).to eq("global-api.example.com")

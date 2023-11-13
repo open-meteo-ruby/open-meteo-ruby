@@ -3,7 +3,7 @@ require_relative "forecast/variables"
 
 module OpenMeteo
   ##
-  # Perform a forecase request to the OpenMeteo API.
+  # Perform a forecast request to the OpenMeteo API.
   #
   # See https://open-meteo.com/en/docs
   class Forecast
@@ -35,6 +35,10 @@ module OpenMeteo
       general: {
         # See https://open-meteo.com/en/docs
         endpoint: :forecast,
+      },
+      dwd_icon: {
+        # See https://open-meteo.com/en/docs/dwd-api
+        endpoint: :forecast_dwd_icon,
       },
     }.freeze
 
