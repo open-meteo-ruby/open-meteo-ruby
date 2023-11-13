@@ -26,12 +26,12 @@ RSpec.describe OpenMeteo::Entities::Forecast::Item do
     expect(item.respond_to?(:whatever)).to be(false)
   end
 
-  it "raises for unexistent attributes" do
+  it "raises for un-existent attributes" do
     expect { item.whatever }.to raise_error(NoMethodError)
   end
 
   describe "#weather_code_symbol" do
-    context "when the weahtercode is nil" do
+    context "when the weather code is nil" do
       let(:weather_code) { nil }
 
       it "returns nil" do
@@ -42,7 +42,7 @@ RSpec.describe OpenMeteo::Entities::Forecast::Item do
     context "when the weather_code exists" do
       let(:weather_code) { 0 }
 
-      it "returns the corresponding symvol" do
+      it "returns the corresponding symbol" do
         expect(item.weather_code_symbol).to eq(:clear_sky)
       end
     end

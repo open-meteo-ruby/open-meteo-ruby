@@ -47,7 +47,7 @@ variables = {
 }
 ```
 
-#### Forecast models in seperate requests
+#### Forecast models in separate requests
 
 There are separate requests for certain weather models. You can make use of those by providing the model symbol to `Forecast#get`:
 
@@ -59,12 +59,12 @@ Default is `:general`.
 
 Available models:
 
-- `:general`: [OpenMeteo Weahter Forecast](https://open-meteo.com/en/docs)
+- `:general`: [OpenMeteo Weather Forecast](https://open-meteo.com/en/docs)
 - `:dwd_icon`: [DWD ICON](https://open-meteo.com/en/docs/dwd-api)
 
 ## Configuration
 
-### Global configuation
+### Global configuration
 
 There is the possibility to configure `OpenMeteo` globally e.g. in an initializer:
 

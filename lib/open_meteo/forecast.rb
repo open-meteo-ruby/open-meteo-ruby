@@ -3,7 +3,7 @@ require_relative "forecast/variables"
 
 module OpenMeteo
   ##
-  # Perform a forecase request to the OpenMeteo API.
+  # Perform a forecast request to the OpenMeteo API.
   #
   # See https://open-meteo.com/en/docs
   class Forecast
