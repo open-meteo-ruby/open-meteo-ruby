@@ -25,4 +25,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "dry-struct", "~> 1.0", ">= 1.0.0"
   spec.add_runtime_dependency "dry-validation", "~> 1.0", ">= 1.0.0"
   spec.add_runtime_dependency "faraday", "~> 2.0", ">= 2.0.0"
+  spec.add_runtime_dependency "faraday-retry", "~> 2.0", ">= 2.0.0"
 end

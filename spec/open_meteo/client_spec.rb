@@ -2,7 +2,24 @@ RSpec.describe OpenMeteo::Client do
   subject { described_class.new(agent:, url_builder:) }
 
   let(:url_builder) { instance_double OpenMeteo::Client::UrlBuilder }
-  let(:agent) { Faraday }
+  let(:agent) { Faraday.new }
+
+  describe "#agent" do
+    context "when the agent is a proc" do
+      let(:agent) { -> { Faraday.new } }
+      let(:agent_from_subject) { subject.agent }
+
+      it "calls it" do
+        expect(agent_from_subject).to be_instance_of(Faraday::Connection)
+      end
+    end
+
+    context "when the agent is not passed in" do
+      it "sets a default Faraday::Connection" do
+        expect(described_class.new.agent).to be_instance_of(Faraday::Connection)
+      end
+    end
+  end
 
   describe "#get" do
     let(:http_response_body) { "{}" }

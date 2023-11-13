@@ -1,4 +1,5 @@
 require "faraday"
+require "faraday/retry"
 
 require_relative "client/config"
 require_relative "client/url_builder"
@@ -12,16 +13,19 @@ module OpenMeteo
     class Timeout < StandardError
     end
 
-    attr_reader :api_config
+    # See https://github.com/lostisland/faraday-retry/tree/main#usage
+    RETRY_OPTIONS = { max: 3, interval: 0.05, interval_randomness: 0.5, backoff_factor: 3 }.freeze
+
+    attr_reader :api_config, :agent
 
     def initialize(
       api_config: OpenMeteo::Client::Config.new,
       url_builder: OpenMeteo::Client::UrlBuilder.new,
-      agent: Faraday.new
+      agent: -> { Faraday.new { |f| f.request :retry, RETRY_OPTIONS } }
     )
       @api_config = api_config
       @url_builder = url_builder
-      @agent = agent
+      @agent = agent.is_a?(Proc) ? agent.call : agent
     end
 
     def get(endpoint_name, *endpoint_args, **get_params)
@@ -39,6 +43,6 @@ module OpenMeteo
 
     private
 
-    attr_reader :agent, :url_builder
+    attr_reader :url_builder
   end
 end
