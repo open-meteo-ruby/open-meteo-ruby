@@ -10,6 +10,10 @@ module OpenMeteo
         OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
       )
       attribute(
+        :minutely_15,
+        OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
+      )
+      attribute(
         :hourly,
         OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
       )
@@ -25,7 +29,7 @@ module OpenMeteo
       def to_get_params
         get_params = {}
 
-        %i[current hourly daily models].each do |key|
+        %i[current minutely_15 hourly daily models].each do |key|
           get_params[key] = send(key).join(",") if send(key) != []
         end
 

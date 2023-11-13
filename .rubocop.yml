@@ -16,6 +16,9 @@ Metrics/MethodLength:
   Max: 20
   Enabled: true
 
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
 RSpec/BeNil:
   EnforcedStyle: be
 RSpec/Rails/HaveHttpStatus:
