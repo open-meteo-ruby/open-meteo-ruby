@@ -27,5 +27,6 @@ module OpenMeteo
 
     add_setting :logger, -> { Logger.new($stdout) }
     add_setting :host, "api.open-meteo.com"
+    add_setting :api_key, -> { ENV.fetch("OPEN_METEO_API_KEY", nil) }
   end
 end

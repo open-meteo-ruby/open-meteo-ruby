@@ -20,20 +20,20 @@ module OpenMeteo
 
     def initialize(
       api_config: OpenMeteo::Client::Config.new,
-      url_builder: OpenMeteo::Client::UrlBuilder.new,
+      url_builder: nil,
       agent: -> { Faraday.new { |f| f.request :retry, RETRY_OPTIONS } }
     )
       @api_config = api_config
-      @url_builder = url_builder
+      @url_builder = url_builder || UrlBuilder.new(api_config:)
       @agent = agent.is_a?(Proc) ? agent.call : agent
     end
 
     def get(endpoint_name, *endpoint_args, **get_params)
       endpoint = url_builder.build_url(endpoint_name, *endpoint_args)
 
-      agent.get do |req|
-        req.params = get_params
-        req.url(endpoint)
+      agent.get do |request|
+        request.params = get_params.merge({ apikey: api_config.api_key }.compact)
+        request.url(endpoint)
       end
     rescue Faraday::ConnectionFailed => e
       raise ConnectionFailed, "Could not connect to OpenMeteo API: #{e.message}"

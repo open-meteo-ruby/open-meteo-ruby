@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- Add API key setting (`config.api_key`) that defaults to `-> { ENV.fetch("OPEN_METEO_API_KEY", nil)`
 - Add retry logic to the client
 - Add models to forecast variables
 - Add minutely_15 to forecast variables

@@ -5,13 +5,18 @@ module OpenMeteo
     class Config
       attr_reader :host, :logger
 
-      def initialize(host: nil, logger: nil)
+      def initialize(api_key: nil, host: nil, logger: nil)
+        @api_key = api_key || OpenMeteo.configuration.api_key
         @host = host || OpenMeteo.configuration.host
         @logger = logger || OpenMeteo.configuration.logger
       end
 
       def url
         "https://#{host}"
+      end
+
+      def api_key
+        @api_key.is_a?(Proc) ? @api_key.call : @api_key
       end
     end
   end
