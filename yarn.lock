@@ -516,12 +516,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prettier/plugin-ruby@npm:^4.0.2":
-  version: 4.0.2
-  resolution: "@prettier/plugin-ruby@npm:4.0.2"
+"@prettier/plugin-ruby@npm:^4.0.4":
+  version: 4.0.4
+  resolution: "@prettier/plugin-ruby@npm:4.0.4"
   peerDependencies:
     prettier: ^3.0.0
-  checksum: 0406a4fb6870acc83983ef7f0cacf9abf83b45e1b9d8021e4ec83ef754c9da7016c3e5b2ee41f22247ead6ce416207807a675ad3d041aabea48c9033bc6f99ad
+  checksum: 7567d7f87fe807f7a90fb4eba7a91d25a1843e19de09289412ba0420e25fadea9840085b495c54212249bb418fcd146d53b105c0e4e57990c5235326bd7c6b01
   languageName: node
   linkType: hard
 
@@ -1248,7 +1248,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "open-meteo-ruby@workspace:."
   dependencies:
-    "@prettier/plugin-ruby": "npm:^4.0.2"
+    "@prettier/plugin-ruby": "npm:^4.0.4"
     cspell: "npm:^8.0.0"
     prettier: "npm:^3.2.4"
   languageName: unknown

@@ -12,7 +12,7 @@
     "spellcheck:list": "cspell '**' --words-only --unique --no-progress"
   },
   "devDependencies": {
-    "@prettier/plugin-ruby": "^4.0.2",
+    "@prettier/plugin-ruby": "^4.0.4",
     "prettier": "^3.2.4"
   },
   "dependencies": {
