@@ -56,5 +56,24 @@ RSpec.describe "Integration > forecast > general" do
         end
       end
     end
+
+    context "when an API key is used" do
+      subject(:response) { forecast.get(location:, variables:) }
+
+      let(:api_config) do
+        OpenMeteo::Client::Config.new(api_key: "123-test", host: "customer-api.open-meteo.com")
+      end
+      let(:client) { OpenMeteo::Client.new(api_config:) }
+      let(:forecast) { OpenMeteo::Forecast.new(client:) }
+
+      it "returns a forecast" do
+        VCR.use_cassette("integration/forecast/api_key") do
+          expect(response.current.item.weather_code_symbol).to eq(:rain_showers_slight)
+          expect(response.minutely_15.items.first.weather_code_symbol).to eq(:rain_slight)
+          expect(response.hourly.items.first.weather_code_symbol).to eq(:rain_slight)
+          expect(response.daily.items.first.weather_code_symbol).to eq(:rain_showers_slight)
+        end
+      end
+    end
   end
 end

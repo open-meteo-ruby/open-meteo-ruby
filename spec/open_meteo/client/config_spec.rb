@@ -1,4 +1,33 @@
 RSpec.describe OpenMeteo::Client::Config do
+  describe "#api_key" do
+    subject { described_class.new.api_key }
+
+    context "when no api_key is set" do
+      context "when the environment variable is not set" do
+        it { is_expected.to be nil }
+      end
+
+      context "when the environment variable is set" do
+        before { stub_const("ENV", ENV.to_hash.merge("OPEN_METEO_API_KEY" => "secret-key")) }
+
+        it { is_expected.to eq "secret-key" }
+      end
+
+      context "when the global config is set" do
+        before { OpenMeteo.configure { |config| config.api_key = "global-api-key" } }
+        after { OpenMeteo.configure { |config| config.api_key = nil } }
+
+        it { is_expected.to eq "global-api-key" }
+      end
+    end
+
+    context "when an api_key is set" do
+      subject { described_class.new(api_key: "other-api-key").api_key }
+
+      it { is_expected.to eq "other-api-key" }
+    end
+  end
+
   describe "#host" do
     context "when no host is set" do
       it "uses the default value" do
