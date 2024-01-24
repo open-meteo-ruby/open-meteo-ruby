@@ -87,11 +87,11 @@ variables = { current: %i[weather_code], hourly: %i[], daily: %i[] }
 forecast_response = forecast.get(location:, variables:)
 ```
 
-| Config key | Default value                                 | Remarks                                                                             |
-| ---------- | --------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `host`     | `"api.open-meteo.com"`                        |                                                                                     |
-| `api_key`  | `-> { ENV.fetch("OPEN_METEO_API_KEY", nil)` } | Use the host `customer-api.open-meteo.com` for the commercial version of OpenMeteo. |
-| `logger`   | `-> { Logger.new($stdout) }`                  |                                                                                     |
+| Config key | Default value                            | Remarks                                                                             |
+| ---------- | ---------------------------------------- | ----------------------------------------------------------------------------------- |
+| `host`     | `"api.open-meteo.com"`                   |                                                                                     |
+| `api_key`  | `ENV.fetch("OPEN_METEO_API_KEY", nil)` } | Use the host `customer-api.open-meteo.com` for the commercial version of OpenMeteo. |
+| `logger`   | `-> { Logger.new($stdout) }`             |                                                                                     |
 
 ### Configuration of a client instance
 

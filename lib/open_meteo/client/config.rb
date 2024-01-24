@@ -16,7 +16,7 @@ module OpenMeteo
       end
 
       def api_key
-        @api_key.is_a?(Proc) ? @api_key.call : @api_key
+        @api_key || ENV.fetch("OPEN_METEO_API_KEY", nil)
       end
     end
   end

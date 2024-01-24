@@ -18,14 +18,10 @@ module OpenMeteo
 
     attr_reader :api_config, :agent
 
-    def initialize(
-      api_config: OpenMeteo::Client::Config.new,
-      url_builder: nil,
-      agent: -> { Faraday.new { |f| f.request :retry, RETRY_OPTIONS } }
-    )
+    def initialize(api_config: OpenMeteo::Client::Config.new, url_builder: nil, agent: nil)
       @api_config = api_config
       @url_builder = url_builder || UrlBuilder.new(api_config:)
-      @agent = agent.is_a?(Proc) ? agent.call : agent
+      @agent = agent || Faraday.new { |f| f.request :retry, RETRY_OPTIONS }
     end
 
     def get(endpoint_name, *endpoint_args, **get_params)

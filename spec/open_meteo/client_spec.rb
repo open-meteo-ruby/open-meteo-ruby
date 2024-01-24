@@ -6,15 +6,6 @@ RSpec.describe OpenMeteo::Client do
   let(:api_config) { OpenMeteo::Client::Config.new }
 
   describe "#agent" do
-    context "when the agent is a proc" do
-      subject { client.agent }
-
-      let(:agent) { -> { Faraday.new } }
-      let(:agent_from_subject) { subject.agent }
-
-      it { is_expected.to be_instance_of(Faraday::Connection) }
-    end
-
     context "when the agent is not passed in sets a default Faraday::Connection" do
       subject { described_class.new.agent }
 
