@@ -15,7 +15,10 @@ RSpec.describe OpenMeteo::Client::Config do
 
       context "when the global config is set" do
         before { OpenMeteo.configure { |config| config.api_key = "global-api-key" } }
-        after { OpenMeteo.configure { |config| config.api_key = nil } }
+
+        after do
+          OpenMeteo.configure { |config| config.api_key = ENV.fetch("OPEN_METEO_API_KEY", nil) }
+        end
 
         it { is_expected.to eq "global-api-key" }
       end
