@@ -91,7 +91,7 @@ forecast_response = forecast.get(location:, variables:)
 | ---------- | ---------------------------------------- | ----------------------------------------------------------------------------------- |
 | `host`     | `"api.open-meteo.com"`                   |                                                                                     |
 | `api_key`  | `ENV.fetch("OPEN_METEO_API_KEY", nil)` } | Use the host `customer-api.open-meteo.com` for the commercial version of OpenMeteo. |
-| `logger`   | `-> { Logger.new($stdout) }`             |                                                                                     |
+| `logger`   | `Logger.new($stdout)`                    |                                                                                     |
 
 ### Configuration of a client instance
 
