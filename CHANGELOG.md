@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2024-01-24
+
 - Add Ruby 3.3 to CI
 - Add API key setting (`config.api_key`) that defaults to `ENV.fetch("OPEN_METEO_API_KEY", nil)`
 - Add retry logic to the client
