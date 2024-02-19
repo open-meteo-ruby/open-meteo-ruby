@@ -16,7 +16,7 @@
     "prettier": "^3.2.4"
   },
   "dependencies": {
-    "cspell": "^8.3.2"
+    "cspell": "^8.4.0"
   },
   "packageManager": "yarn@4.0.1",
   "volta": {
