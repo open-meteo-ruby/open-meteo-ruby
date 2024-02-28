@@ -79,9 +79,9 @@ GEM
     method_source (1.0.0)
     net-http (0.4.1)
       uri
-    nokogiri (1.16.0-arm64-darwin)
+    nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.0-x86_64-linux)
+    nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     parallel (1.24.0)
     parser (3.3.0.5)
@@ -177,7 +177,7 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.13.0)
     vcr (6.2.0)
-    yard (0.9.34)
+    yard (0.9.35)
     zeitwerk (2.6.12)
 
 PLATFORMS
