@@ -10,7 +10,7 @@ module OpenMeteo
 
     attr_reader :config
 
-    def initialize(config: OpenMeteo::Client::Config.new)
+    def initialize(config: OpenMeteo.configuration)
       @config = config
     end
 

@@ -3,7 +3,7 @@ module OpenMeteo
   # Wrap the JSON body response from the OpenMeteo request.
   #
   class ResponseWrapper
-    def initialize(config: OpenMeteo::Client::Config.new)
+    def initialize(config: OpenMeteo.configuration)
       @config = config
     end
 

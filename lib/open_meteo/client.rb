@@ -1,5 +1,4 @@
 require_relative "faraday_connection"
-require_relative "client/config"
 require_relative "client/url_builder"
 
 module OpenMeteo
@@ -11,15 +10,15 @@ module OpenMeteo
     class Timeout < StandardError
     end
 
-    attr_reader :api_config, :agent
+    attr_reader :config, :agent
 
     def initialize(
-      api_config: OpenMeteo::Client::Config.new,
+      config: OpenMeteo.configuration,
       url_builder: nil,
       agent: FaradayConnection.new.connect
     )
-      @api_config = api_config
-      @url_builder = url_builder || UrlBuilder.new(api_config:)
+      @config = config
+      @url_builder = url_builder || UrlBuilder.new(config:)
       @agent = agent
     end
 
@@ -27,7 +26,7 @@ module OpenMeteo
       endpoint = url_builder.build_url(endpoint_name, *endpoint_args)
 
       agent.get do |request|
-        request.params = get_params.merge({ apikey: api_config.api_key }.compact)
+        request.params = get_params.merge({ apikey: config.api_key }.compact)
         request.url(endpoint)
       end
     rescue Faraday::ConnectionFailed => e

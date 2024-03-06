@@ -1,9 +1,7 @@
 RSpec.describe OpenMeteo::Forecast do
   subject(:forecast) { described_class.new(client:, response_wrapper:) }
 
-  let(:client) do
-    instance_double(OpenMeteo::Client, api_config: instance_double(OpenMeteo::Client::Config))
-  end
+  let(:client) { instance_double(OpenMeteo::Client) }
   let(:response_wrapper) { instance_double(OpenMeteo::ResponseWrapper) }
   let(:faraday_response) { instance_double(Faraday::Response) }
   let(:forecast_entity) { instance_double(OpenMeteo::Entities::Forecast) }
