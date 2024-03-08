@@ -15,11 +15,11 @@ module OpenMeteo
 
     def initialize(
       api_config: OpenMeteo::Client::Config.new,
-      url_builder: nil,
+      url_builder: UrlBuilder.new(api_config:),
       agent: FaradayConnection.new.connect
     )
       @api_config = api_config
-      @url_builder = url_builder || UrlBuilder.new(api_config:)
+      @url_builder = url_builder
       @agent = agent
     end
 
