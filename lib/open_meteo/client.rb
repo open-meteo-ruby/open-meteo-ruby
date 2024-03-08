@@ -16,7 +16,7 @@ module OpenMeteo
     def initialize(
       config: OpenMeteo::Client::Config.new,
       url_builder: UrlBuilder.new(config:),
-      agent: FaradayConnection.new(config:).connect
+      agent: FaradayConnection.new(config:)
     )
       @config = config
       @url_builder = url_builder
@@ -26,7 +26,7 @@ module OpenMeteo
     def get(endpoint_name, *endpoint_args, **get_params)
       endpoint = url_builder.build_url(endpoint_name, *endpoint_args)
 
-      agent.get do |request|
+      agent.connect.get do |request|
         request.params = get_params.merge({ apikey: config.api_key }.compact)
         request.url(endpoint)
       end
