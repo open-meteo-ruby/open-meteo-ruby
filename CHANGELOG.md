@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.1] - 2024-03-08
+
+- Add configurable timeouts
+
 ## [0.3.0] - 2024-01-24
 
 - Add Ruby 3.3 to CI
