@@ -1,9 +1,9 @@
 RSpec.describe OpenMeteo::Client do
-  let(:client) { described_class.new(agent:, url_builder:, api_config:) }
+  let(:client) { described_class.new(agent:, url_builder:, config:) }
 
   let(:url_builder) { instance_double OpenMeteo::Client::UrlBuilder }
   let(:agent) { Faraday.new }
-  let(:api_config) { OpenMeteo::Client::Config.new }
+  let(:config) { OpenMeteo::Client::Config.new }
 
   describe "#agent" do
     context "when the agent is not passed in sets a default Faraday::Connection" do
@@ -34,7 +34,7 @@ RSpec.describe OpenMeteo::Client do
     end
 
     context "when an api key is set" do
-      before { allow(api_config).to receive(:api_key).and_return("123") }
+      before { allow(config).to receive(:api_key).and_return("123") }
 
       it "adds the api key to the request" do
         response

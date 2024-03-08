@@ -1,6 +1,6 @@
 RSpec.describe OpenMeteo::Client::UrlBuilder do
-  let(:builder) { described_class.new(api_config:) }
-  let(:api_config) { OpenMeteo::Client::Config.new(host: "api.example.com") }
+  let(:builder) { described_class.new(config:) }
+  let(:config) { OpenMeteo::Client::Config.new(host: "api.example.com") }
 
   describe "forecast url" do
     let(:endpoint) { :forecast }

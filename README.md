@@ -102,9 +102,9 @@ You can also create a client that takes a configuration that overwrites the glob
 # some/other/file.rb
 require "open-meteo"
 
-api_config =
+config =
   OpenMeteo::Client::Config.new(logger: Logger.new($stdout), host: "api.my-own-open-meteo.com")
-client = OpenMeteo::Client.new(api_config:)
+client = OpenMeteo::Client.new(config:)
 forecast = OpenMeteo::Forecast.new(client:)
 
 location = OpenMeteo::Entities::Location.new(latitude: 52.52, longitude: 13.41)
