@@ -88,15 +88,18 @@ variables = { current: %i[weather_code], hourly: %i[], daily: %i[] }
 forecast_response = forecast.get(location:, variables:)
 ```
 
-| Config key | Default value                            | Remarks                                                                             |
-| ---------- | ---------------------------------------- | ----------------------------------------------------------------------------------- |
-| `host`     | `"api.open-meteo.com"`                   |                                                                                     |
-| `api_key`  | `ENV.fetch("OPEN_METEO_API_KEY", nil)` } | Use the host `customer-api.open-meteo.com` for the commercial version of OpenMeteo. |
-| `logger`   | `Logger.new($stdout)`                    |                                                                                     |
+| Config key | Default value                            | Remarks                                                                                                                     |
+| ---------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `host`     | `"api.open-meteo.com"`                   |                                                                                                                             |
+| `api_key`  | `ENV.fetch("OPEN_METEO_API_KEY", nil)` } | Use the host `customer-api.open-meteo.com` for the commercial version of OpenMeteo.                                         |
+| `logger`   | `Logger.new($stdout)`                    |                                                                                                                             |
+| `timeouts` | `{ timeout: 5, open_timeout: 5}`         | Uses [Faraday configuration options](https://github.com/lostisland/faraday/blob/main/docs/customization/request-options.md) |
 
 ### Configuration of a client instance
 
-You can also create a client that takes a configuration that overwrites the global configuration:
+You can also create a client that takes a configuration that overwrites the global configuration.
+
+The configuration sent to the client initializer will be shared with the dependent classes:
 
 ```ruby
 # some/other/file.rb
