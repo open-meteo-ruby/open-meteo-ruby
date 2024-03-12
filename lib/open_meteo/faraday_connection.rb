@@ -20,6 +20,7 @@ module OpenMeteo
         conn.options[:open_timeout] = config.timeouts[:open_timeout]
 
         conn.request :retry, RETRY_OPTIONS
+        conn.response :logger
       end
     end
   end
