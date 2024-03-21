@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    open-meteo (0.3.1)
+    open-meteo (0.3.2)
       dry-struct (~> 1.0, >= 1.0.0)
       dry-validation (~> 1.0, >= 1.0.0)
       faraday (~> 2.0, >= 2.0.0)
