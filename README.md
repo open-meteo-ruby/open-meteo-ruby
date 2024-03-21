@@ -88,23 +88,26 @@ variables = { current: %i[weather_code], hourly: %i[], daily: %i[] }
 forecast_response = forecast.get(location:, variables:)
 ```
 
-| Config key | Default value                            | Remarks                                                                             |
-| ---------- | ---------------------------------------- | ----------------------------------------------------------------------------------- |
-| `host`     | `"api.open-meteo.com"`                   |                                                                                     |
-| `api_key`  | `ENV.fetch("OPEN_METEO_API_KEY", nil)` } | Use the host `customer-api.open-meteo.com` for the commercial version of OpenMeteo. |
-| `logger`   | `Logger.new($stdout)`                    |                                                                                     |
+| Config key | Default value                            | Remarks                                                                                                                     |
+| ---------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `host`     | `"api.open-meteo.com"`                   |                                                                                                                             |
+| `api_key`  | `ENV.fetch("OPEN_METEO_API_KEY", nil)` } | Use the host `customer-api.open-meteo.com` for the commercial version of OpenMeteo.                                         |
+| `logger`   | `Logger.new($stdout)`                    |                                                                                                                             |
+| `timeouts` | `{ timeout: 5, open_timeout: 5}`         | Uses [Faraday configuration options](https://github.com/lostisland/faraday/blob/main/docs/customization/request-options.md) |
 
 ### Configuration of a client instance
 
-You can also create a client that takes a configuration that overwrites the global configuration:
+You can also create a client that takes a configuration that overwrites the global configuration.
+
+The configuration sent to the client initializer will be shared with the dependent classes:
 
 ```ruby
 # some/other/file.rb
 require "open-meteo"
 
-api_config =
+config =
   OpenMeteo::Client::Config.new(logger: Logger.new($stdout), host: "api.my-own-open-meteo.com")
-client = OpenMeteo::Client.new(api_config:)
+client = OpenMeteo::Client.new(config:)
 forecast = OpenMeteo::Forecast.new(client:)
 
 location = OpenMeteo::Entities::Location.new(latitude: 52.52, longitude: 13.41)

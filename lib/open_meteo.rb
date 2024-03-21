@@ -1,3 +1,4 @@
+require "open_meteo/faraday_connection"
 require "open_meteo/types"
 require "open_meteo/configuration"
 require "open_meteo/entities/location"

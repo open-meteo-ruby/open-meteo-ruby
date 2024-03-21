@@ -1,15 +1,27 @@
 RSpec.describe OpenMeteo::Client do
-  let(:client) { described_class.new(agent:, url_builder:, api_config:) }
+  let(:client) { described_class.new(agent:, url_builder:, config:) }
 
   let(:url_builder) { instance_double OpenMeteo::Client::UrlBuilder }
-  let(:agent) { Faraday.new }
-  let(:api_config) { OpenMeteo::Client::Config.new }
+  let(:agent) { OpenMeteo::FaradayConnection.new }
+  let(:connection) { agent.connect }
+  let(:config) { OpenMeteo::Client::Config.new }
+
+  it "uses same configuration class for all dependent classes" do
+    client = described_class.new(config:)
+    expect(client.config).to eq(config)
+
+    url_builder = client.instance_variable_get(:@url_builder)
+    expect(url_builder.config).to eq(config)
+
+    agent = client.instance_variable_get(:@agent)
+    expect(agent.config).to eq(config)
+  end
 
   describe "#agent" do
-    context "when the agent is not passed in sets a default Faraday::Connection" do
+    context "when the agent is not passed in sets the default" do
       subject { described_class.new.agent }
 
-      it { is_expected.to be_instance_of(Faraday::Connection) }
+      it { is_expected.to be_instance_of(OpenMeteo::FaradayConnection) }
     end
   end
 
@@ -26,7 +38,9 @@ RSpec.describe OpenMeteo::Client do
       allow(url_builder).to receive(:build_url).with(:forecast).and_return(
         "https://api.example.com/forecast",
       )
-      allow(agent).to receive(:get).and_yield(request).and_return(faraday_response)
+
+      allow(agent).to receive(:connect).and_return(connection)
+      allow(connection).to receive(:get).and_yield(request).and_return(faraday_response)
     end
 
     it "returns a successful response" do
@@ -34,7 +48,7 @@ RSpec.describe OpenMeteo::Client do
     end
 
     context "when an api key is set" do
-      before { allow(api_config).to receive(:api_key).and_return("123") }
+      before { allow(config).to receive(:api_key).and_return("123") }
 
       it "adds the api key to the request" do
         response
@@ -45,7 +59,7 @@ RSpec.describe OpenMeteo::Client do
 
     context "when there is a Faraday connection error" do
       before do
-        allow(agent).to receive(:get).and_raise(
+        allow(connection).to receive(:get).and_raise(
           Faraday::ConnectionFailed,
           "Couldn't resolve host name",
         )
@@ -60,7 +74,7 @@ RSpec.describe OpenMeteo::Client do
     end
 
     context "when there is a Faraday timeout error" do
-      before { allow(agent).to receive(:get).and_raise(Faraday::TimeoutError) }
+      before { allow(connection).to receive(:get).and_raise(Faraday::TimeoutError) }
 
       it "returns an error" do
         expect { response }.to raise_error(

@@ -1,12 +1,21 @@
 RSpec.describe OpenMeteo::Forecast do
   subject(:forecast) { described_class.new(client:, response_wrapper:) }
 
-  let(:client) do
-    instance_double(OpenMeteo::Client, api_config: instance_double(OpenMeteo::Client::Config))
-  end
+  let(:config) { instance_double(OpenMeteo::Client::Config) }
+  let(:client) { instance_double(OpenMeteo::Client, config:) }
   let(:response_wrapper) { instance_double(OpenMeteo::ResponseWrapper) }
   let(:faraday_response) { instance_double(Faraday::Response) }
   let(:forecast_entity) { instance_double(OpenMeteo::Entities::Forecast) }
+
+  it "uses same configuration class for all dependent classes" do
+    forecast = described_class.new(config:)
+
+    client = forecast.instance_variable_get(:@client)
+    expect(client.config).to eq(config)
+
+    wrapper = forecast.instance_variable_get(:@response_wrapper)
+    expect(wrapper.config).to eq(config)
+  end
 
   describe "#get" do
     subject(:forecast_get) { forecast.get(location:, variables:, model:) }

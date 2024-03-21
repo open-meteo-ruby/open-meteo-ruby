@@ -60,10 +60,10 @@ RSpec.describe "Integration > forecast > general" do
     context "when an API key is used" do
       subject(:response) { forecast.get(location:, variables:) }
 
-      let(:api_config) do
+      let(:config) do
         OpenMeteo::Client::Config.new(api_key: "123-test", host: "customer-api.open-meteo.com")
       end
-      let(:client) { OpenMeteo::Client.new(api_config:) }
+      let(:client) { OpenMeteo::Client.new(config:) }
       let(:forecast) { OpenMeteo::Forecast.new(client:) }
 
       it "returns a forecast" do
