@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.2] - 2024-03-21
+
+- Forecast class accepts a initializer config class that is shared across dependent classes.
+
 ## [0.3.1] - 2024-03-08
 
 - Add configurable timeouts
