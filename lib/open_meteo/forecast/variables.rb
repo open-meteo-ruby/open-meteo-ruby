@@ -25,6 +25,7 @@ module OpenMeteo
         :models,
         OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
       )
+      attribute(:timezone, OpenMeteo::Types::Strict::String.optional.default(nil))
 
       def to_get_params
         get_params = {}
@@ -32,6 +33,8 @@ module OpenMeteo
         %i[current minutely_15 hourly daily models].each do |key|
           get_params[key] = send(key).join(",") if send(key) != []
         end
+
+        %i[timezone].each { |key| get_params[key] = send(key) if send(key) }
 
         get_params
       end
