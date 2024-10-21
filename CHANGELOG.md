@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- fix(logging): uses configured logger with Faraday https://github.com/cpb
+
 ## [0.3.2] - 2024-03-21
 
 - Forecast class accepts a initializer config class that is shared across dependent classes.
