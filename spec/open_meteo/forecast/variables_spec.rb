@@ -1,10 +1,13 @@
 RSpec.describe OpenMeteo::Forecast::Variables do
-  let(:variables) { described_class.new(current:, minutely_15:, hourly:, daily:, models:) }
+  let(:variables) do
+    described_class.new(current:, minutely_15:, hourly:, daily:, models:, timezone:)
+  end
   let(:current) { [] }
   let(:minutely_15) { [] }
   let(:hourly) { [] }
   let(:daily) { [] }
   let(:models) { [] }
+  let(:timezone) { nil }
 
   describe "#to_get_params" do
     subject { variables.to_get_params }
@@ -75,12 +78,19 @@ RSpec.describe OpenMeteo::Forecast::Variables do
       it { is_expected.to eq({ models: "something,other" }) }
     end
 
+    context "when timezone is set" do
+      let(:timezone) { "Europe/Berlin" }
+
+      it { is_expected.to eq({ timezone: "Europe/Berlin" }) }
+    end
+
     context "when all are set" do
       let(:current) { %i[something other] }
       let(:minutely_15) { %i[something other] }
       let(:hourly) { %i[something other] }
       let(:daily) { %i[something other] }
       let(:models) { %i[something other] }
+      let(:timezone) { "Europe/Berlin" }
       let(:expected_output) do
         {
           current: "something,other",
@@ -88,6 +98,7 @@ RSpec.describe OpenMeteo::Forecast::Variables do
           hourly: "something,other",
           daily: "something,other",
           models: "something,other",
+          timezone: "Europe/Berlin",
         }
       end
 

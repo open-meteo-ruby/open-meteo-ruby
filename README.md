@@ -47,6 +47,12 @@ variables = {
 }
 ```
 
+Other variables that can be set:
+
+| Variable   | Example value   |
+| ---------- | --------------- |
+| `timezone` | `Europe/Berlin` |
+
 #### Forecast models in separate requests
 
 There are separate requests for certain weather models. You can make use of those by providing the model symbol to `Forecast#get`:
