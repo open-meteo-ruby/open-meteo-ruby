@@ -3,6 +3,7 @@ inherit_from: .rubocop_prettier.yml
 require:
   - rubocop-rake
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   TargetRubyVersion: 3.1
@@ -24,7 +25,7 @@ RSpec/BeNil:
 RSpec/DescribeClass:
   Exclude:
     - spec/open_meteo/integration/**/*
-RSpec/Rails/HaveHttpStatus:
+RSpecRails/HaveHttpStatus:
   Enabled: false
 RSpec/ExampleLength:
   Max: 20

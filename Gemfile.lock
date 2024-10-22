@@ -132,6 +132,9 @@ GEM
       rubocop (~> 1.0)
     rubocop-rspec (3.1.0)
       rubocop (~> 1.61)
+    rubocop-rspec_rails (2.30.0)
+      rubocop (~> 1.61)
+      rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     simplecov (0.22.0)
       docile (~> 1.1)
@@ -191,6 +194,7 @@ DEPENDENCIES
   rubocop
   rubocop-rake
   rubocop-rspec
+  rubocop-rspec_rails
   simplecov
   solargraph
   syntax_tree
