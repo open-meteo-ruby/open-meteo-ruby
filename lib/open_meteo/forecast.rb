@@ -57,8 +57,8 @@ module OpenMeteo
     end
 
     def get_forecast(endpoint, location, variables)
-      get_params = { **location.to_get_params, **variables.to_get_params }
-      response = client.get(endpoint, **get_params)
+      query_params = { **location.to_query_params, **variables.to_query_params }
+      response = client.get(endpoint, query_params:)
 
       @response_wrapper.wrap(response, entity: OpenMeteo::Entities::Forecast)
     end

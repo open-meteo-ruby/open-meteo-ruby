@@ -42,15 +42,17 @@ RSpec.describe OpenMeteo::Forecast do
 
     context "when the location and the variables are valid" do
       let(:variables) { { hourly: %i[apparent_temperature], daily: %i[apparent_temperature_max] } }
-
-      before do
-        allow(client).to receive(:get).with(
-          :forecast,
+      let(:query_params) do
+        {
           longitude: 1.1,
           latitude: 2.2,
           hourly: "apparent_temperature",
           daily: "apparent_temperature_max",
-        ).and_return(faraday_response)
+        }
+      end
+
+      before do
+        allow(client).to receive(:get).with(:forecast, query_params:).and_return(faraday_response)
         allow(response_wrapper).to receive(:wrap).with(
           faraday_response,
           entity: OpenMeteo::Entities::Forecast,

@@ -23,11 +23,11 @@ module OpenMeteo
       @agent = agent
     end
 
-    def get(endpoint_name, *endpoint_args, **get_params)
-      endpoint = url_builder.build_url(endpoint_name, *endpoint_args)
+    def get(endpoint_name, path_params: {}, query_params: {})
+      endpoint = url_builder.build_url(endpoint_name, path_params)
 
       agent.connect.get do |request|
-        request.params = get_params.merge({ apikey: config.api_key }.compact)
+        request.params = query_params.merge({ apikey: config.api_key }.compact)
         request.url(endpoint)
       end
     rescue Faraday::ConnectionFailed => e

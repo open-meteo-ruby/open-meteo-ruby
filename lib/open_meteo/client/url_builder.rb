@@ -11,11 +11,11 @@ module OpenMeteo
         @config = config
       end
 
-      def build_url(endpoint, *args)
+      def build_url(endpoint, path_params = {})
         relative_path = API_PATHS.fetch(endpoint.to_sym)
         full_path = [config.url, relative_path].join("/")
 
-        URI::DEFAULT_PARSER.escape(format(full_path, args))
+        URI::DEFAULT_PARSER.escape(format(full_path, path_params))
       end
     end
   end

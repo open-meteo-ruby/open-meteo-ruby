@@ -27,16 +27,16 @@ module OpenMeteo
       )
       attribute(:timezone, OpenMeteo::Types::Strict::String.optional.default(nil))
 
-      def to_get_params
-        get_params = {}
+      def to_query_params
+        query_params = {}
 
         %i[current minutely_15 hourly daily models].each do |key|
-          get_params[key] = send(key).join(",") if send(key) != []
+          query_params[key] = send(key).join(",") if send(key) != []
         end
 
-        %i[timezone].each { |key| get_params[key] = send(key) if send(key) }
+        %i[timezone].each { |key| query_params[key] = send(key) if send(key) }
 
-        get_params
+        query_params
       end
     end
   end

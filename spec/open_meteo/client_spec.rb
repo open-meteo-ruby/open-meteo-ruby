@@ -35,7 +35,7 @@ RSpec.describe OpenMeteo::Client do
     end
 
     before do
-      allow(url_builder).to receive(:build_url).with(:forecast).and_return(
+      allow(url_builder).to receive(:build_url).with(:forecast, {}).and_return(
         "https://api.example.com/forecast",
       )
 

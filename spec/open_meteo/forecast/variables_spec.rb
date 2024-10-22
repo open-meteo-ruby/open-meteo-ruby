@@ -9,11 +9,11 @@ RSpec.describe OpenMeteo::Forecast::Variables do
   let(:models) { [] }
   let(:timezone) { nil }
 
-  describe "#to_get_params" do
-    subject { variables.to_get_params }
+  describe "#to_query_params" do
+    subject { variables.to_query_params }
 
     context "when no variables are set" do
-      subject { described_class.new.to_get_params }
+      subject { described_class.new.to_query_params }
 
       it { is_expected.to eq({}) }
     end

@@ -12,7 +12,7 @@ module OpenMeteo
         OpenMeteo::Entities::Contracts::LocationContract.validate!(to_hash)
       end
 
-      def to_get_params
+      def to_query_params
         { latitude:, longitude: }
       end
     end
