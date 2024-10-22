@@ -179,7 +179,7 @@ GEM
     vcr (6.3.1)
       base64
     yard (0.9.37)
-    zeitwerk (2.7.1)
+    zeitwerk (2.6.18)
 
 PLATFORMS
   arm64-darwin-21
@@ -205,6 +205,7 @@ DEPENDENCIES
   syntax_tree-haml
   syntax_tree-rbs
   vcr
+  zeitwerk (~> 2.6)
 
 BUNDLED WITH
    2.4.10
