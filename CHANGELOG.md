@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- refactor(UrlBuilder): use variable interpolation instead of `%s, %i` for string substitution
 - Add `timezone` to variables ([Issue #69](https://github.com/open-meteo-ruby/open-meteo-ruby/issues/69))
 - fix(logging): uses configured logger with Faraday https://github.com/cpb
 

@@ -3,8 +3,8 @@ RSpec.describe OpenMeteo::Entities::Location do
   let(:latitude) { nil }
   let(:longitude) { nil }
 
-  describe "#to_get_params" do
-    subject { location.to_get_params }
+  describe "#to_query_params" do
+    subject { location.to_query_params }
 
     let(:latitude) { 1.1.to_d }
     let(:longitude) { 2.2.to_d }
