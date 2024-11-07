@@ -37,5 +37,7 @@ RSpec/MultipleMemoizedHelpers:
 RSpec/NestedGroups:
   Enabled: false
 
+Style/SafeNavigationChainLength:
+  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
