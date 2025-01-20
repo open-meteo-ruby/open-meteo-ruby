@@ -13,10 +13,10 @@
   },
   "devDependencies": {
     "@prettier/plugin-ruby": "^4.0.4",
-    "prettier": "^3.3.3"
+    "prettier": "^3.4.2"
   },
   "dependencies": {
-    "cspell": "^8.15.7"
+    "cspell": "^8.17.2"
   },
   "packageManager": "yarn@4.0.1",
   "volta": {
