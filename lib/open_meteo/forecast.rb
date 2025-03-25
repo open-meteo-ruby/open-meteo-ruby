@@ -31,10 +31,6 @@ module OpenMeteo
       get_forecast(model_definition[:endpoint], location, variables_object)
     end
 
-    private
-
-    attr_reader :client
-
     AVAILABLE_FORECAST_MODELS = {
       general: {
         # See https://open-meteo.com/en/docs
@@ -45,6 +41,10 @@ module OpenMeteo
         endpoint: :forecast_dwd_icon,
       },
     }.freeze
+
+    private
+
+    attr_reader :client
 
     def get_model_definition(model)
       AVAILABLE_FORECAST_MODELS.fetch(model) { raise ForecastModelNotImplemented }
