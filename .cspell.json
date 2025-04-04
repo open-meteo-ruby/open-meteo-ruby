@@ -8,6 +8,6 @@
       "path": "./.cspell.dictionary.txt"
     }
   ],
-  "ignorePaths": ["coverage", "node_modules", "*.gem", "*.log"],
+  "ignorePaths": ["coverage", "node_modules", "vcr_cassettes", "*.gem", "*.log"],
   "words": []
 }
