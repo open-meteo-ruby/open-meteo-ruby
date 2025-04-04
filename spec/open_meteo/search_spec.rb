@@ -1,5 +1,5 @@
 RSpec.describe OpenMeteo::Search do
-  subject(:search_get) { described_class.new(client:, response_wrapper:) }
+  subject(:search) { described_class.new(client:, response_wrapper:) }
 
   let(:config) { instance_double(OpenMeteo::Client::Config) }
   let(:client) { instance_double(OpenMeteo::Client, config:) }
@@ -18,31 +18,25 @@ RSpec.describe OpenMeteo::Search do
   end
 
   describe "#get" do
-    subject(:search_get) { search.get(name:, variables:) }
+    subject(:search) { described_class.new(client:, response_wrapper:).get(name:, variables:) }
 
     let(:name) { "Minneapolis" }
     let(:variables) { {} }
 
     context "when it has as count of 20" do
-      let(:variables) { {count: 20, language: "es" } }
-      let(:query_params) do
-        {
-          count: 20,
-          language: "es",
-          name: "Minneapolis",
-        }
-      end
+      let(:variables) { { count: 20, language: "es" } }
+      let(:query_params) { { count: 20, language: "es", name: "Minneapolis" } }
 
       before do
-        allow(client).to receive(:get).with(:search_get, query_params:).and_return(faraday_response)
+        allow(client).to receive(:get).with(:search, query_params:).and_return(faraday_response)
         allow(response_wrapper).to receive(:wrap).with(
           faraday_response,
           entity: OpenMeteo::Entities::Search,
-          ).and_return(search_entity)
+        ).and_return(search_entity)
       end
 
       it "calls the client" do
-        expect(search_get).to eq(search_entity)
+        expect(search).to eq(search_entity)
       end
     end
   end

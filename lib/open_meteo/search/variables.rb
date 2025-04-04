@@ -1,7 +1,7 @@
 module OpenMeteo
   class Search
     ##
-    # The variables used for a Search in the Open Mateo Geolocation API
+    # The variables used for a Search in the Open Meteo Geolocation API
     #
     class Variables < Dry::Struct
       attribute(:count, OpenMeteo::Types::Strict::Integer.optional.default(nil))

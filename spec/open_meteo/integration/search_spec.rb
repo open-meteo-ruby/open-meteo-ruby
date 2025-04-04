@@ -1,8 +1,8 @@
-RSpec.describe 'Integration > Search' do
+RSpec.describe "Integration > Search" do
   let(:search) { OpenMeteo::Search.new }
   let(:variables) { {} }
 
-  describe '#get' do
+  describe "#get" do
     let(:name) { "Hollywood" }
 
     context "when a default amount(10) of responses is requested" do
@@ -15,13 +15,12 @@ RSpec.describe 'Integration > Search' do
           expect(response.results.length).to eq(10)
         end
       end
-
     end
 
     context "when a larger amount of responses is requested" do
       subject(:response) { search.get(name:, variables:) }
 
-      let(:variables) { {count: 20} }
+      let(:variables) { { count: 20 } }
 
       it "More search results with a larger count" do
         VCR.use_cassette("integration/search/hollywood_20") do
