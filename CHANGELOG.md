@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [0.3.4] - 2025-04-06
+
 - Add [Geocoding API](https://open-meteo.com/en/docs/geocoding-api) via `OpenMeteo::Search`
 
 ## [0.3.3] - 2024-10-23
