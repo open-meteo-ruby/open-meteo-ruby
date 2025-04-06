@@ -23,4 +23,4 @@ gem "syntax_tree-haml"
 gem "syntax_tree-rbs"
 
 # zeitwerk 2.7 requires Ruby 3.2 and we want to stay compatible with Ruby 3.1 for now
-gem "zeitwerk", "~> 2.6"
+gem "zeitwerk", "~> 2.6.0"
