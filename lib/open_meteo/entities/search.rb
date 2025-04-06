@@ -1,8 +1,7 @@
 module OpenMeteo
   module Entities
     ##
-    # A Search Result in the Open Meteo Geolocation Api, Represents one possible location
-    #
+    # A Search Result in the Open Meteo Geocoding API. Represents one possible location.
     SearchResult =
       Struct.new(
         :id,
@@ -29,8 +28,7 @@ module OpenMeteo
       )
 
     ##
-    # A list of possible locations from the Geolocation API
-    #
+    # A list of possible locations from the Geocoding API
     class Search
       attr_reader :attributes, :results, :raw_json
 

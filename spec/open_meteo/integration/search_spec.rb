@@ -5,7 +5,7 @@ RSpec.describe "Integration > Search" do
   describe "#get" do
     let(:name) { "Hollywood" }
 
-    context "when a default amount(10) of responses is requested" do
+    context "when a default amount (10) of responses is requested" do
       subject(:response) { search.get(name:, variables:) }
 
       it "returns search results" do

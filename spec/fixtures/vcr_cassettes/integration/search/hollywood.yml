@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://geocoding-api.open-meteo.com/v1/search?name=Hollywood
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.12.2
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      date:
+      - Sun, 06 Apr 2025 11:27:02 GMT
+      content-type:
+      - application/json; charset=utf-8
+      content-length:
+      - '892'
+      connection:
+      - keep-alive
+      x-encoding-time:
+      - 0.004899501800537109 ms
+      content-encoding:
+      - gzip
+    body:
+      encoding: UTF-8
+      string: '{"results":[{"id":4158928,"name":"Hollywood","latitude":26.0112,"longitude":-80.14949,"elevation":3.0,"feature_code":"PPL","country_code":"US","admin1_id":4155751,"admin2_id":4149007,"timezone":"America/New_York","population":149728,"postcodes":["33019","33020","33021","33022","33023","33024","33025","33026","33027","33029","33081","33083"],"country_id":6252001,"country":"United
+        States","admin1":"Florida","admin2":"Broward"},{"id":5357527,"name":"Hollywood","latitude":34.09834,"longitude":-118.32674,"elevation":108.0,"feature_code":"PPLX","country_code":"US","admin1_id":5332921,"admin2_id":5368381,"timezone":"America/Los_Angeles","population":167664,"country_id":6252001,"country":"United
+        States","admin1":"California","admin2":"Los Angeles"},{"id":4582042,"name":"Hollywood","latitude":32.73434,"longitude":-80.24177,"elevation":13.0,"feature_code":"PPL","country_code":"US","admin1_id":4597040,"admin2_id":4574328,"timezone":"America/New_York","population":4962,"postcodes":["29449"],"country_id":6252001,"country":"United
+        States","admin1":"South Carolina","admin2":"Charleston"},{"id":4067814,"name":"Hollywood","latitude":34.72425,"longitude":-85.97248,"elevation":193.0,"feature_code":"PPL","country_code":"US","admin1_id":4829764,"admin2_id":4069472,"timezone":"America/Chicago","population":974,"postcodes":["35752"],"country_id":6252001,"country":"United
+        States","admin1":"Alabama","admin2":"Jackson"},{"id":4358334,"name":"Hollywood","latitude":38.34596,"longitude":-76.57162,"elevation":40.0,"feature_code":"PPL","country_code":"US","admin1_id":4361885,"admin2_id":4368320,"timezone":"America/New_York","postcodes":["20636"],"country_id":6252001,"country":"United
+        States","admin1":"Maryland","admin2":"Saint Mary''s"},{"id":4718314,"name":"Peggy","latitude":28.7397,"longitude":-98.17862,"elevation":116.0,"feature_code":"PPL","country_code":"US","admin1_id":4736286,"admin2_id":4671531,"timezone":"America/Chicago","postcodes":["78062"],"country_id":6252001,"country":"United
+        States","admin1":"Texas","admin2":"Atascosa"},{"id":4813519,"name":"MacArthur","latitude":37.75845,"longitude":-81.2126,"elevation":742.0,"feature_code":"PPL","country_code":"US","admin1_id":4826850,"admin2_id":4819310,"timezone":"America/New_York","population":1500,"country_id":6252001,"country":"United
+        States","admin1":"West Virginia","admin2":"Raleigh"},{"id":4067815,"name":"Hollywood","latitude":33.47288,"longitude":-86.78304,"elevation":215.0,"feature_code":"PPL","country_code":"US","admin1_id":4829764,"admin2_id":4069696,"timezone":"America/Chicago","population":930,"country_id":6252001,"country":"United
+        States","admin1":"Alabama","admin2":"Jefferson"},{"id":2963748,"name":"Hollywood","latitude":53.09333,"longitude":-6.60806,"elevation":175.0,"feature_code":"PPL","country_code":"IE","admin1_id":7521314,"admin2_id":2960935,"timezone":"Europe/Dublin","country_id":2963597,"country":"Ireland","admin1":"Leinster","admin2":"County
+        Wicklow"},{"id":3294957,"name":"Hollywood","latitude":51.82972,"longitude":-9.89556,"elevation":32.0,"feature_code":"PPL","country_code":"IE","admin1_id":7521315,"admin2_id":2963517,"timezone":"Europe/Dublin","country_id":2963597,"country":"Ireland","admin1":"Munster","admin2":"Co
+        Kerry"}],"generationtime_ms":1.5009642}'
+  recorded_at: Sun, 06 Apr 2025 11:27:02 GMT
+recorded_with: VCR 6.3.1

@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Add [Geocoding API](https://open-meteo.com/en/docs/geocoding-api) via `OpenMeteo::Search`
+
 ## [0.3.3] - 2024-10-23
 
 - refactor(UrlBuilder): use variable interpolation instead of `%s, %i` for string substitution
