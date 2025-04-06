@@ -7,7 +7,7 @@ RSpec.describe OpenMeteo::Search do
   let(:faraday_response) { instance_double(Faraday::Response) }
   let(:search_entity) { instance_double(OpenMeteo::Entities::Search) }
 
-  it "uses same configuration class for all dependent classes" do
+  it "uses the same configuration class for all dependent classes" do
     search = described_class.new(config:)
 
     client = search.instance_variable_get(:@client)

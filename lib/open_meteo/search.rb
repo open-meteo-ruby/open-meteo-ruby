@@ -3,7 +3,7 @@ require_relative "search/variables"
 
 module OpenMeteo
   ##
-  # Perform a search request to the Open Meteo Geocoding Api
+  # Perform a search request to the Open Meteo Geocoding API
   #
   # Returns a list of possible locations based of a location name string
   # https://open-meteo.com/en/docs/geocoding-api
