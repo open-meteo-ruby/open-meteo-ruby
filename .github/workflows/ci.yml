@@ -53,11 +53,12 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      # Ensure Node.js 20 is set up before running codecov-action
-      - name: Set up Node.js 20
+      # Ensure Node.js is set up before running codecov-action
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version-file: ".node-version"
+          cache: "yarn"
 
       - run: bundle exec rspec
       - uses: codecov/codecov-action@v3.1.5
