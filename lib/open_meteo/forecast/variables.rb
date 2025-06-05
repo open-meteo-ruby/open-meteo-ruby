@@ -26,6 +26,10 @@ module OpenMeteo
         OpenMeteo::Types::Strict::Array.of(OpenMeteo::Types::Strict::Symbol).default([].freeze),
       )
       attribute(:timezone, OpenMeteo::Types::Strict::String.optional.default(nil))
+      attribute(:temperature_unit, OpenMeteo::Types::Strict::String.optional.default(nil))
+      attribute(:wind_speed_unit, OpenMeteo::Types::Strict::String.optional.default(nil))
+      attribute(:precipitation_unit, OpenMeteo::Types::Strict::String.optional.default(nil))
+      attribute(:forecast_days, OpenMeteo::Types::Strict::Integer.optional.default(nil))
 
       def to_query_params
         query_params = {}
@@ -34,7 +38,7 @@ module OpenMeteo
           query_params[key] = send(key).join(",") if send(key) != []
         end
 
-        %i[timezone].each { |key| query_params[key] = send(key) if send(key) }
+        %i[timezone temperature_unit wind_speed_unit precipitation_unit forecast_days].each { |key| query_params[key] = send(key) if send(key) }
 
         query_params
       end
