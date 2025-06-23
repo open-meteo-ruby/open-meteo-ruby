@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@prettier/plugin-ruby": "^4.0.4",
-    "prettier": "^3.5.3"
+    "prettier": "^3.6.0"
   },
   "dependencies": {
     "cspell": "^8.18.1"
