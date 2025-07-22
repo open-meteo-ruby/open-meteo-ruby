@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.5] - 2025-07-22
+
+- Add more variables: `temperature_unit`, `wind_speed_unit`, `precipitation_unit`, `forecast_days`, `past_days`
+
 ## [0.3.4] - 2025-04-06
 
 - Add [Geocoding API](https://open-meteo.com/en/docs/geocoding-api) via `OpenMeteo::Search`
