@@ -11,6 +11,7 @@ RSpec.describe OpenMeteo::Forecast::Variables do
       wind_speed_unit:,
       precipitation_unit:,
       forecast_days:,
+      past_days:,
     )
   end
   let(:current) { [] }
@@ -23,6 +24,7 @@ RSpec.describe OpenMeteo::Forecast::Variables do
   let(:wind_speed_unit) { nil }
   let(:precipitation_unit) { nil }
   let(:forecast_days) { nil }
+  let(:past_days) { nil }
 
   describe "#to_query_params" do
     subject { variables.to_query_params }
@@ -123,6 +125,12 @@ RSpec.describe OpenMeteo::Forecast::Variables do
       it { is_expected.to eq({ forecast_days: 1 }) }
     end
 
+    context "when past_days is set" do
+      let(:past_days) { 1 }
+
+      it { is_expected.to eq({ past_days: 1 }) }
+    end
+
     context "when all are set" do
       let(:current) { %i[something other] }
       let(:minutely_15) { %i[something other] }
@@ -134,6 +142,7 @@ RSpec.describe OpenMeteo::Forecast::Variables do
       let(:wind_speed_unit) { "mph" }
       let(:precipitation_unit) { "inch" }
       let(:forecast_days) { 1 }
+      let(:past_days) { 1 }
       let(:expected_output) do
         {
           current: "something,other",
@@ -146,6 +155,7 @@ RSpec.describe OpenMeteo::Forecast::Variables do
           wind_speed_unit: "mph",
           precipitation_unit: "inch",
           forecast_days: 1,
+          past_days: 1,
         }
       end
 

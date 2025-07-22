@@ -30,6 +30,7 @@ module OpenMeteo
       attribute(:wind_speed_unit, OpenMeteo::Types::Strict::String.optional.default(nil))
       attribute(:precipitation_unit, OpenMeteo::Types::Strict::String.optional.default(nil))
       attribute(:forecast_days, OpenMeteo::Types::Strict::Integer.optional.default(nil))
+      attribute(:past_days, OpenMeteo::Types::Strict::Integer.optional.default(nil))
 
       def to_query_params
         query_params = {}
@@ -38,9 +39,14 @@ module OpenMeteo
           query_params[key] = send(key).join(",") if send(key) != []
         end
 
-        %i[timezone temperature_unit wind_speed_unit precipitation_unit forecast_days].each do |key|
-          query_params[key] = send(key) if send(key)
-        end
+        %i[
+          timezone
+          temperature_unit
+          wind_speed_unit
+          precipitation_unit
+          forecast_days
+          past_days
+        ].each { |key| query_params[key] = send(key) if send(key) }
 
         query_params
       end

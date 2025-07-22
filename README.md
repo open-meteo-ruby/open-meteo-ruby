@@ -56,6 +56,7 @@ Other variables that can be set:
 | `wind_speed_unit`    | `mph`           |
 | `precipitation_unit` | `inch`          |
 | `forecast_days`      | `7`             |
+| `past_days`          | `1`             |
 
 #### Forecast models in separate requests
 
