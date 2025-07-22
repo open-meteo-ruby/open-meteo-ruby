@@ -21,6 +21,10 @@ format:
 gem-build:
   gem build open-meteo.gemspec
 
+# Push the build gem FILE to RubyGems
+gem-push FILE:
+  gem push {{FILE}}
+
 # Lint the Ruby files with Rubocop
 rubocop:
   bundle exec rubocop
