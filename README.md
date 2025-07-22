@@ -49,13 +49,13 @@ variables = {
 
 Other variables that can be set:
 
-| Variable              | Example value     |
-| --------------------- | ----------------- |
-| `timezone`            | `Europe/Berlin`   |
-| `temperature_unit`    | `fahrenheit`      |
-| `wind_speed_unit`     | `mph`             |
-| `precipitation_unit`  | `inch`            |
-| `forecast_days`       | `7`               |
+| Variable             | Example value   |
+| -------------------- | --------------- |
+| `timezone`           | `Europe/Berlin` |
+| `temperature_unit`   | `fahrenheit`    |
+| `wind_speed_unit`    | `mph`           |
+| `precipitation_unit` | `inch`          |
+| `forecast_days`      | `7`             |
 
 #### Forecast models in separate requests
 

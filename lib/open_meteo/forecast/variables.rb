@@ -38,7 +38,9 @@ module OpenMeteo
           query_params[key] = send(key).join(",") if send(key) != []
         end
 
-        %i[timezone temperature_unit wind_speed_unit precipitation_unit forecast_days].each { |key| query_params[key] = send(key) if send(key) }
+        %i[timezone temperature_unit wind_speed_unit precipitation_unit forecast_days].each do |key|
+          query_params[key] = send(key) if send(key)
+        end
 
         query_params
       end

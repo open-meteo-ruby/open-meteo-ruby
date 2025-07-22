@@ -1,6 +1,17 @@
 RSpec.describe OpenMeteo::Forecast::Variables do
   let(:variables) do
-    described_class.new(current:, minutely_15:, hourly:, daily:, models:, timezone:, temperature_unit:, wind_speed_unit:, precipitation_unit:, forecast_days:)
+    described_class.new(
+      current:,
+      minutely_15:,
+      hourly:,
+      daily:,
+      models:,
+      timezone:,
+      temperature_unit:,
+      wind_speed_unit:,
+      precipitation_unit:,
+      forecast_days:,
+    )
   end
   let(:current) { [] }
   let(:minutely_15) { [] }
@@ -112,7 +123,6 @@ RSpec.describe OpenMeteo::Forecast::Variables do
       it { is_expected.to eq({ forecast_days: 1 }) }
     end
 
-
     context "when all are set" do
       let(:current) { %i[something other] }
       let(:minutely_15) { %i[something other] }
@@ -135,7 +145,7 @@ RSpec.describe OpenMeteo::Forecast::Variables do
           temperature_unit: "fahrenheit",
           wind_speed_unit: "mph",
           precipitation_unit: "inch",
-          forecast_days: 1
+          forecast_days: 1,
         }
       end
 
