@@ -1,6 +1,8 @@
-require "byebug"
-require "pry"
-require "pry-byebug"
+unless ENV["CI"]
+  require "byebug"
+  require "pry"
+  require "pry-byebug"
+end
 require "simplecov"
 
 SimpleCov.start do
