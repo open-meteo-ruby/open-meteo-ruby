@@ -19,11 +19,9 @@ module OpenMeteo
         def initialize_items(json_daily)
           json_daily["time"]
             .map do |element|
-              json_daily
-                .keys
-                .each_with_object({}) do |attr, json_item|
-                  json_item[attr] = json_daily[attr][json_daily["time"].index(element)]
-                end
+              json_daily.keys.to_h do |attr|
+                [attr, json_daily[attr][json_daily["time"].index(element)]]
+              end
             end
             .map { |json_item| OpenMeteo::Entities::Forecast::Item.new(json_item) }
         end
