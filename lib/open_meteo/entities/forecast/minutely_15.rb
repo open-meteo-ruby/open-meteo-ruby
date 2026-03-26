@@ -21,11 +21,9 @@ module OpenMeteo
         def initialize_items(json_minutely_15)
           json_minutely_15["time"]
             .map do |element|
-              json_minutely_15
-                .keys
-                .each_with_object({}) do |attr, json_item|
-                  json_item[attr] = json_minutely_15[attr][json_minutely_15["time"].index(element)]
-                end
+              json_minutely_15.keys.to_h do |attr|
+                [attr, json_minutely_15[attr][json_minutely_15["time"].index(element)]]
+              end
             end
             .map { |json_item| OpenMeteo::Entities::Forecast::Item.new(json_item) }
         end
