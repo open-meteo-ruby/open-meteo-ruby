@@ -60,7 +60,10 @@ jobs:
           cache: "yarn"
 
       - run: bundle exec rspec
+      - run: ls -la
+      - run: cd coverage && ls -la
       - uses: codecov/codecov-action@v6
         with:
-          files: .resultset.json
-          directory: coverage
+          files: coverage/.resultset.json
+          disable_search: true
+          fail_ci_if_error: true
