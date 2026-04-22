@@ -8,7 +8,7 @@ jobs:
   Spellcheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version-file: ".node-version"
@@ -18,7 +18,7 @@ jobs:
   Lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
@@ -26,11 +26,11 @@ jobs:
   Format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: ".node-version"
           cache: "yarn"
@@ -46,7 +46,7 @@ jobs:
           - ruby: 3.3
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
@@ -60,7 +60,10 @@ jobs:
           cache: "yarn"
 
       - run: bundle exec rspec
-      - uses: codecov/codecov-action@v3.1.5
+      - uses: codecov/codecov-action@v6
+        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
         with:
-          files: .resultset.json
-          directory: coverage
+          files: coverage/.resultset.json
+          disable_search: true
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
