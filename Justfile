@@ -2,8 +2,11 @@
 default:
   just --list
 
+install:
+  rv clean-install
+
 # Run all checks from CI
-ci: spellcheck format rubocop test
+ci: install spellcheck format rubocop test
 
 # Start an IRB console with the OpenMeteo Ruby files loaded
 console:
@@ -11,7 +14,7 @@ console:
 
 # Run the example script
 example:
-  bundle exec ruby example.rb
+  rv run ruby example.rb
 
 # Format files with Prettier
 format:
@@ -27,12 +30,13 @@ gem-push FILE:
 
 # Lint the Ruby files with Rubocop
 rubocop:
-  bundle exec rubocop
+  rv run rubocop
+
 lint: rubocop
 
 # Lint and autofix the Ruby files with Rubocop
 rubocop-fix:
-  bundle exec rubocop -a
+  rv run rubocop -a
 
 # Install the yard docs needed for Solargraph to work better
 solargraph-setup:
@@ -48,8 +52,8 @@ spellcheck-list:
 
 # Run the RSpec tests
 test:
-  bundle exec rspec
+  rv run rspec
 
 # Run the RSpec tests and open the coverage report
 test-open-coverage:
-  bundle exec rspec; open coverage/index.html
+  rv run rspec; open coverage/index.html
